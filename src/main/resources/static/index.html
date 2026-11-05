@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinanCorp S.A. - Sistema SERF (Sede Perú)</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- BARRA LATERAL VERTICAL (SIDEBAR) EXACTA A LA IMAGEN 1 -->
+    <aside class="app-sidebar">
+      
+      <!-- Logo y Nombre Corporativo -->
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-icon">
+          <!-- Icono de Edificio Corporativo -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+            <path d="M9 22v-4h6v4"></path>
+            <line x1="8" y1="6" x2="10" y2="6"></line>
+            <line x1="14" y1="6" x2="16" y2="6"></line>
+            <line x1="8" y1="10" x2="10" y2="10"></line>
+            <line x1="14" y1="10" x2="16" y2="10"></line>
+            <line x1="8" y1="14" x2="10" y2="14"></line>
+            <line x1="14" y1="14" x2="16" y2="14"></line>
+          </svg>
+        </div>
+        <div>
+          <div class="sidebar-brand-title">FinanCorp SERF</div>
+          <div class="sidebar-brand-subtitle">Fiscal Risk &amp; Reporting</div>
+        </div>
+      </div>
+
+      <!-- Menú de Navegación Vertical (Exacto a la Imagen 1) -->
+      <nav class="sidebar-nav">
+        <!-- Ítem 1: Resumen y Configuración (Activo por defecto) -->
+        <button class="sidebar-nav-item active" onclick="switchSidebarTab('dashboard', this)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>Resumen y Configuración</span>
+        </button>
+
+        <!-- Ítem 2: Módulo 1: Productos Importados -->
+        <button class="sidebar-nav-item" onclick="switchSidebarTab('products', this)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+          <span>Módulo 1: Productos Importados</span>
+        </button>
+
+        <!-- Ítem 3: Módulo 2: Ventas en Filiales -->
+        <button class="sidebar-nav-item" onclick="switchSidebarTab('sales', this)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>Módulo 2: Ventas en Filiales</span>
+        </button>
+
+        <!-- Ítem 4: Módulo 3: Reportes Financieros -->
+        <button class="sidebar-nav-item" onclick="switchSidebarTab('reports', this)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <span>Módulo 3: Reportes Financieros</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div><strong>FinanCorp S.A.</strong></div>
+        <div>Moneda Base: Euros (EUR)</div>
+        <div style="margin-top:4px; font-size:0.72rem; color:#94A3B8;">Versión 2.4 - Caso B2B</div>
+      </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <div class="app-main">
+      
+      <!-- Barra Superior (Topbar) -->
+      <header class="app-topbar">
+        <div class="topbar-title-wrap">
+          <span class="topbar-company-name">FinanCorp S.A. - Sistema SERF (Sede Perú)</span>
+          <span class="topbar-filial-badge">Multinacional B2B</span>
+        </div>
+
+        <!-- Widget Visible de Tasas Oficiales frente al Euro (Requerimiento 1) -->
+        <div class="topbar-rates-widget" id="headerRatesWidget">
+          <span class="rates-badge">Tasas Oficiales</span>
+          <span class="rate-item" id="ratePenLabel">1 EUR = 4.13 PEN</span>
+          <span class="rate-divider">|</span>
+          <span class="rate-item" id="rateCnyLabel">1 EUR = 7.82 CNY</span>
+          <span class="rate-divider">|</span>
+          <span class="rate-item" id="rateUsdLabel">1 EUR = 1.08 USD</span>
+        </div>
+      </header>
+
+      <!-- Contenido Dinámico de las Pestañas -->
+      <main class="main-content-body">
+
+        <!-- VISTA 1: RESUMEN Y CONFIGURACIÓN (COMBINADO) -->
+        <div id="tab-dashboard" class="tab-content active">
+          
+          <!-- Tarjetas KPI -->
+          <div class="kpi-grid">
+            <div class="kpi-card kpi-navy">
+              <div class="kpi-label">Ingresos Consolidados</div>
+              <div class="kpi-value" id="kpiTotalRevenue">0.00 &euro;</div>
+              <div class="kpi-sub">Ventas unificadas de todas las filiales</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Inversión en Importación</div>
+              <div class="kpi-value" id="kpiTotalExpense">0.00 &euro;</div>
+              <div class="kpi-sub">Lotes originados en Shenzhen (China)</div>
+            </div>
+            <div class="kpi-card kpi-green">
+              <div class="kpi-label">Margen Operativo Bruto</div>
+              <div class="kpi-value" id="kpiNetProfit">0.00 &euro;</div>
+              <div class="kpi-sub">Utilidad corporativa neta en Euros</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Filiales Activas</div>
+              <div class="kpi-value">3</div>
+              <div class="kpi-sub">Perú (PEN), Chile (USD), Europa (EUR)</div>
+            </div>
+          </div>
+
+          <!-- Configuración Global (Singleton) integrada -->
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Configuración Corporativa Global (Singleton)</h3>
+                <span class="badge badge-purple">Instancia Única</span>
+              </div>
+              <div class="card-body">
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">
+                  El patrón <strong>Singleton</strong> garantiza que toda la multinacional FinanCorp S.A. opere bajo una sola
+                  instancia centralizada de tasas de cambio oficiales frente a 1 Euro (EUR).
+                </p>
+                <form id="configForm" onsubmit="handleConfigSubmit(event)">
+                  <div class="grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Tasa PEN frente a 1 EUR (Perú):</label>
+                      <input type="number" step="0.0001" class="form-input" id="cfgPen" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Tasa CNY frente a 1 EUR (China):</label>
+                      <input type="number" step="0.0001" class="form-input" id="cfgCny" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Tasa USD frente a 1 EUR (Chile / Global):</label>
+                    <input type="number" step="0.0001" class="form-input" id="cfgUsd" required>
+                  </div>
+                  <button type="submit" class="btn btn-secondary">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                    Actualizar Tasas Globales (Singleton)
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Filiales Registradas -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Filiales Registradas en FinanCorp S.A.</h3>
+                <span class="badge badge-blue">Multi-región</span>
+              </div>
+              <div class="card-body">
+                <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;" id="subsidiariesList">
+                  <li style="padding:10px 14px; background:#F8FAFC; border:1px solid var(--border-corporate); border-radius:6px; display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                      <strong>Filial Perú</strong>
+                      <div style="font-size:0.78rem; color:var(--text-muted);">Moneda operativa: Soles (PEN) &bull; Conversión oficial frente al EUR</div>
+                    </div>
+                    <span class="badge badge-green">Activa</span>
+                  </li>
+                  <li style="padding:10px 14px; background:#F8FAFC; border:1px solid var(--border-corporate); border-radius:6px; display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                      <strong>Filial Chile</strong>
+                      <div style="font-size:0.78rem; color:var(--text-muted);">Moneda operativa: Dólares (USD) &bull; Conversión oficial frente al EUR</div>
+                    </div>
+                    <span class="badge badge-green">Activa</span>
+                  </li>
+                  <li style="padding:10px 14px; background:#F8FAFC; border:1px solid var(--border-corporate); border-radius:6px; display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                      <strong>Sede Central Europa</strong>
+                      <div style="font-size:0.78rem; color:var(--text-muted);">Moneda operativa: Euros (EUR) &bull; Moneda Base Corporativa</div>
+                    </div>
+                    <span class="badge badge-blue">Sede Principal</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tablas de Actividad Reciente -->
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Últimas Ventas Registradas</h3>
+                <span class="badge badge-blue">En vivo</span>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="corporate-table" id="dashboardSalesTable">
+                    <thead>
+                      <tr>
+                        <th>Factura</th>
+                        <th>Filial</th>
+                        <th>Producto</th>
+                        <th>Total Local</th>
+                        <th>Total EUR</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Inventario Actual de Importaciones (Shenzhen)</h3>
+                <span class="badge badge-green">Disponibilidad</span>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="corporate-table" id="dashboardInventoryTable">
+                    <thead>
+                      <tr>
+                        <th>SKU</th>
+                        <th>Producto</th>
+                        <th>Categoría</th>
+                        <th>Stock</th>
+                        <th>Costo EUR</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- VISTA 2: MÓDULO 1: PRODUCTOS IMPORTADOS (SHENZHEN) -->
+        <div id="tab-products" class="tab-content">
+          <div class="grid-2">
+            <!-- Formulario de Alta -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Dar de Alta Lote Importado desde Shenzhen</h3>
+                <span class="badge badge-yellow">Origen China</span>
+              </div>
+              <div class="card-body">
+                <form id="productForm" onsubmit="handleProductSubmit(event)">
+                  <div class="grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Código SKU *</label>
+                      <input type="text" class="form-input" id="prodSku" placeholder="Ej: SKU-LAP-99" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Categoría *</label>
+                      <select class="form-select" id="prodCategory" required>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Smartphone">Smartphone</option>
+                        <option value="Accesorio">Accesorio</option>
+                        <option value="Equipo de red">Equipo de red</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Nombre del Producto *</label>
+                    <input type="text" class="form-input" id="prodName" placeholder="Ej: Laptop Ultrabook ThinkZen 15" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Descripción Técnica</label>
+                    <textarea class="form-textarea" id="prodDescription" rows="2" placeholder="Especificaciones clave del lote..."></textarea>
+                  </div>
+
+                  <div class="grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Costo de Importación (CNY) *</label>
+                      <input type="number" step="0.01" class="form-input" id="prodCostCny" placeholder="Ej: 3500.00" oninput="updateLiveCnyToEur()" required>
+                      <div class="live-conversion-badge" id="liveCnyEurBadge">Equivalente: 0.00 &euro;</div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Precio Sugerido Local (EUR) *</label>
+                      <input type="number" step="0.01" class="form-input" id="prodSuggestedPrice" placeholder="Ej: 850.00" required>
+                    </div>
+                  </div>
+
+                  <div class="grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Proveedor en Shenzhen *</label>
+                      <input type="text" class="form-input" id="prodSupplier" value="Shenzhen Global Tech Ltd" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Fecha de Lote *</label>
+                      <input type="date" class="form-input" id="prodDate" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Stock Inicial * (Validación Defensiva: &ge; 0)</label>
+                    <input type="number" class="form-input" id="prodStock" placeholder="Ej: 50" required>
+                    <p class="form-helper">El backend rechazará con IllegalArgumentException si el costo o el stock son negativos.</p>
+                  </div>
+
+                  <div style="display:flex; gap:10px; margin-top:16px;">
+                    <button type="submit" class="btn btn-primary">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Registrar Producto en Sistema
+                    </button>
+                    <button type="button" class="btn btn-outline" onclick="testDefensiveValidationProduct()">
+                      Probar Validación Defensiva (Error &lt; 0)
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Tabla de Productos Registrados -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Catálogo Consolidado de Shenzhen</h3>
+                <span class="badge badge-blue" id="productCountBadge">0 productos</span>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="corporate-table" id="productsTable">
+                    <thead>
+                      <tr>
+                        <th>SKU</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Costo CNY</th>
+                        <th>Costo EUR</th>
+                        <th>Stock</th>
+                        <th>Proveedor</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VISTA 3: MÓDULO 2: VENTAS EN FILIALES -->
+        <div id="tab-sales" class="tab-content">
+          <div class="grid-2">
+            <!-- Formulario de Venta -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Emitir Venta en Filial (Control Atómico de Stock)</h3>
+                <span class="badge badge-purple">Moneda Local &rarr; EUR</span>
+              </div>
+              <div class="card-body">
+                <form id="saleForm" onsubmit="handleSaleSubmit(event)">
+                  <div class="grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Filial Operativa *</label>
+                      <select class="form-select" id="saleSubsidiary" onchange="handleSubsidiaryChange()" required>
+                        <option value="Perú">Filial Perú (Moneda: PEN / Soles)</option>
+                        <option value="Chile">Filial Chile (Moneda: USD / Dólares)</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Número de Factura *</label>
+                      <input type="text" class="form-input" id="saleInvoice" placeholder="Ej: B001-000550" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Producto a Vender *</label>
+                    <select class="form-select" id="saleProductSelect" onchange="handleSaleProductSelect()" required></select>
+                    <div class="form-helper" id="productStockIndicator">Seleccione un producto para ver el stock en tiempo real.</div>
+                  </div>
+
+                  <div class="grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Cantidad *</label>
+                      <input type="number" min="1" class="form-input" id="saleQuantity" value="1" oninput="calculateSaleTotals()" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" id="salePriceLabel">Precio Unitario (PEN) *</label>
+                      <input type="number" step="0.01" class="form-input" id="saleUnitPrice" placeholder="Ej: 3500.00" oninput="calculateSaleTotals()" required>
+                    </div>
+                  </div>
+
+                  <!-- Conversión en vivo -->
+                  <div class="form-group" style="background:#F1F5F9; padding:12px; border-radius:6px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                      <span style="font-size:0.85rem; color:var(--text-muted);">Total Moneda Local:</span>
+                      <strong id="saleTotalLocalPreview">0.00 PEN</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between;">
+                      <span style="font-size:0.85rem; color:var(--secondary-slate); font-weight:700;">Conversión a Moneda Base (EUR):</span>
+                      <strong style="color:var(--primary-navy);" id="saleTotalEurPreview">0.00 &euro;</strong>
+                    </div>
+                  </div>
+
+                  <div class="grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Cliente B2B *</label>
+                      <input type="text" class="form-input" id="saleClient" placeholder="Ej: Banco Santander" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Vendedor Corporativo *</label>
+                      <input type="text" class="form-input" id="saleSeller" placeholder="Ej: Rosa Falcon" required>
+                    </div>
+                  </div>
+
+                  <div class="grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Método de Pago *</label>
+                      <select class="form-select" id="salePaymentMethod" required>
+                        <option value="Transferencia">Transferencia Bancaria</option>
+                        <option value="Tarjeta">Tarjeta Corporativa</option>
+                        <option value="Efectivo">Efectivo</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Fecha de Venta *</label>
+                      <input type="date" class="form-input" id="saleDate" required>
+                    </div>
+                  </div>
+
+                  <div style="display:flex; gap:10px; margin-top:16px;">
+                    <button type="submit" class="btn btn-primary">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Confirmar Venta y Descontar Stock
+                    </button>
+                    <button type="button" class="btn btn-outline" onclick="testAtomicStockError()">
+                      Probar Quiebre de Stock (Error &gt; Stock)
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Tabla de Ventas Consolidadas -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Ventas Registradas en Filiales</h3>
+                <span class="badge badge-green" id="salesCountBadge">0 ventas</span>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="corporate-table" id="salesTable">
+                    <thead>
+                      <tr>
+                        <th>Factura</th>
+                        <th>Filial</th>
+                        <th>Producto</th>
+                        <th>Cant.</th>
+                        <th>Total Local</th>
+                        <th>Total EUR</th>
+                        <th>Pago</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VISTA 4: MÓDULO 3: REPORTES FINANCIEROS (PATRONES GOF) -->
+        <div id="tab-reports" class="tab-content">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Panel de Generación de Reportes Financieros (Patrones GoF)</h3>
+              <span class="badge badge-blue">Prototype &bull; Builder &bull; Composite &bull; Decorator &bull; Facade</span>
+            </div>
+            <div class="card-body">
+              <div class="grid-2">
+                <!-- Selección de Plantilla Prototipo -->
+                <div>
+                  <label class="form-label">1. Seleccionar Plantilla Base (Patrón Prototype):</label>
+                  <select class="form-select" id="reportTemplateSelect" onchange="previewTemplateInfo()">
+                    <option value="MENSUAL">Reporte Mensual de Ingresos</option>
+                    <option value="TRIMESTRAL">Reporte Trimestral de Gastos e Ingresos</option>
+                    <option value="ANUAL">Reporte Anual Consolidado</option>
+                  </select>
+                  <div class="form-helper" id="templateDescription" style="margin-top:6px;">
+                    Clonación en memoria de la plantilla base sin alterar los registros globales.
+                  </div>
+                </div>
+
+                <!-- Capas de Seguridad Decorator -->
+                <div>
+                  <label class="form-label">2. Capas de Seguridad Visual (Patrón Decorator):</label>
+                  <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+                    <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+                      <input type="checkbox" id="chkWatermark" checked>
+                      <strong>Marca de Agua Institucional ("CONFIDENCIAL")</strong>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+                      <input type="checkbox" id="chkSignature" checked>
+                      <strong>Firma Digital Corporativa (Fabiola Cadillo / Estefanía Orellana)</strong>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+                <button class="btn btn-primary" onclick="generateReportFacade()">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  Generar Reporte Unificado (Facade)
+                </button>
+                <span style="font-size:0.82rem; color:var(--text-muted);">
+                  Ensambla paso a paso (Builder), estructura arbórea (Composite) y decora dinámicamente.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hoja de Visualización del Reporte Financiero -->
+          <div id="reportPaperContainer" style="display:none;">
+            <div class="report-paper" id="reportPaper">
+              
+              <!-- Banner de Marca de Agua Decorator -->
+              <div id="watermarkBannerSlot"></div>
+
+              <!-- Cabecera del Reporte (Builder) -->
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid var(--primary-navy); padding-bottom:14px; margin-bottom:20px;">
+                <div>
+                  <h2 style="color:var(--primary-navy); font-size:1.5rem; font-weight:800;" id="reportTitleSlot">Reporte Financiero</h2>
+                  <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;" id="reportPeriodSlot">Periodo: -</p>
+                  <p style="color:var(--secondary-slate); font-size:0.82rem; font-weight:600;" id="reportAudienceSlot">Audiencia: -</p>
+                </div>
+                <div style="text-align:right;">
+                  <span class="rates-badge" style="background:var(--primary-navy); font-size:0.8rem; padding:5px 10px;">FINANCORP S.A.</span>
+                  <p style="font-size:0.78rem; color:var(--text-muted); margin-top:6px;" id="reportGeneratedSlot">Generado el: -</p>
+                  <p style="font-size:0.78rem; color:var(--secondary-slate); font-weight:700;">Moneda Base: Euros (&euro;)</p>
+                </div>
+              </div>
+
+              <!-- Resumen de Totales Consolidados -->
+              <div class="kpi-grid" style="margin-bottom:20px;">
+                <div class="kpi-card kpi-navy">
+                  <div class="kpi-label">Ingresos Totales (EUR)</div>
+                  <div class="kpi-value" id="repSummaryRevenue">0.00 &euro;</div>
+                </div>
+                <div class="kpi-card">
+                  <div class="kpi-label">Gastos Totales (EUR)</div>
+                  <div class="kpi-value" id="repSummaryExpense">0.00 &euro;</div>
+                </div>
+                <div class="kpi-card kpi-green">
+                  <div class="kpi-label">Resultado Neto (EUR)</div>
+                  <div class="kpi-value" id="repSummaryNet">0.00 &euro;</div>
+                </div>
+              </div>
+
+              <!-- Secciones Jerárquicas Composite -->
+              <h3 style="color:var(--primary-navy); font-size:1.1rem; margin-bottom:12px; border-left:4px solid var(--secondary-slate); padding-left:10px;">
+                Estructura Jerárquica del Reporte (Patrón Composite)
+              </h3>
+              <div id="compositeSectionsContainer"></div>
+
+              <!-- Tablas de Ventas e Inventarios Consolidadas en Euros (Builder) -->
+              <h3 style="color:var(--primary-navy); font-size:1.1rem; margin:24px 0 12px 0; border-left:4px solid var(--secondary-slate); padding-left:10px;">
+                Detalle Consolidado de Ventas en Filiales (Euros)
+              </h3>
+              <div class="table-responsive">
+                <table class="corporate-table" id="repSalesTable">
+                  <thead>
+                    <tr>
+                      <th>Factura</th>
+                      <th>Fecha</th>
+                      <th>Filial</th>
+                      <th>Producto</th>
+                      <th>Cantidad</th>
+                      <th>Total Local</th>
+                      <th>Total EUR</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+
+              <!-- Tarjeta de Firma Digital Decorator -->
+              <div id="digitalSignatureSlot"></div>
+
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Contenedor para Alertas y Toasts de Validación Defensiva -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

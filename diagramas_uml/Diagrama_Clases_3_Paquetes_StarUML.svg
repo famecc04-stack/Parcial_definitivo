@@ -1,0 +1,349 @@
+<svg width="2000" height="1350" viewBox="0 0 2000 1350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title-main { font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: 800; fill: #1A365D; }
+      .title-sub { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: 600; fill: #2B6CB0; }
+      .pkg-header { font-family: 'Segoe UI', Arial, sans-serif; font-size: 15px; font-weight: 800; fill: #1E293B; }
+      .pkg-sub { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #64748B; }
+      .cls-header { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; text-anchor: middle; }
+      .cls-stereo { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #E2E8F0; text-anchor: middle; }
+      .cls-body { font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; fill: #1E293B; }
+      .pattern-tag { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; font-weight: 800; fill: #FFFFFF; }
+    </style>
+    <marker id="arrow-impl" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <polygon points="0 0, 10 6, 0 12" fill="#FFFFFF" stroke="#0D9488" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-inherit" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <polygon points="0 0, 10 6, 0 12" fill="#FFFFFF" stroke="#BE185D" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-use" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <polyline points="0 1, 8 5, 0 9" fill="none" stroke="#2563EB" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamond-comp" markerWidth="16" markerHeight="12" refX="1" refY="6" orient="auto">
+      <polygon points="0 6, 7 1, 14 6, 7 11" fill="#047857" stroke="#047857" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamond-aggr" markerWidth="16" markerHeight="12" refX="1" refY="6" orient="auto">
+      <polygon points="0 6, 7 1, 14 6, 7 11" fill="#FFFFFF" stroke="#BE185D" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <rect width="2000" height="1350" fill="#F8FAFC"/>
+
+  <!-- Header Banner -->
+  <rect x="40" y="20" width="1920" height="70" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="40" y="20" width="8" height="70" rx="4" fill="#1A365D"/>
+  <text x="65" y="50" class="title-main">6. DISEÑO DE LA SOLUCIÓN CON DIAGRAMAS UML — FINANCORP S.A. (SISTEMA SERF)</text>
+  <text x="65" y="74" class="title-sub">DIAGRAMA DE CLASES SEGREGADO EN 3 PAQUETES: MODEL, SERVICE Y PATTERNS (CREACIONALES Y ESTRUCTURALES GoF)</text>
+
+  <!-- ========================================================================= -->
+  <!-- PAQUETE 1: MODEL -->
+  <!-- ========================================================================= -->
+  <rect x="40" y="110" width="340" height="600" rx="10" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="2"/>
+  <rect x="40" y="110" width="340" height="42" rx="10" fill="#EFF6FF"/>
+  <text x="55" y="132" class="pkg-header">📁 Paquete: model</text>
+  <text x="55" y="146" class="pkg-sub">Clases Producto y Venta (Datos privados y validaciones)</text>
+
+  <!-- Cls: Producto -->
+  <g transform="translate(55, 170)">
+    <rect x="0" y="0" width="310" height="230" rx="6" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="2"/>
+    <rect x="0" y="0" width="310" height="42" rx="6" fill="#2B6CB0"/>
+    <text x="155" y="18" class="cls-stereo">&lt;&lt;Entity&gt;&gt;</text>
+    <text x="155" y="34" class="cls-header">Producto</text>
+    
+    <text x="15" y="62" class="cls-body">- sku: String</text>
+    <text x="15" y="78" class="cls-body">- nombre: String</text>
+    <text x="15" y="94" class="cls-body">- categoria: String</text>
+    <text x="15" y="110" class="cls-body">- costoCny: double</text>
+    <text x="15" y="126" class="cls-body">- precioSugeridoEur: double</text>
+    <text x="15" y="142" class="cls-body">- proveedor: String</text>
+    <text x="15" y="158" class="cls-body">- stock: int</text>
+    <line x1="0" y1="168" x2="310" y2="168" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="188" class="cls-body">+ validarDefensivo(): void</text>
+    <text x="15" y="206" class="cls-body">+ getCostoEur(): double</text>
+  </g>
+
+  <!-- Cls: Venta -->
+  <g transform="translate(55, 420)">
+    <rect x="0" y="0" width="310" height="250" rx="6" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="2"/>
+    <rect x="0" y="0" width="310" height="42" rx="6" fill="#2B6CB0"/>
+    <text x="155" y="18" class="cls-stereo">&lt;&lt;Entity&gt;&gt;</text>
+    <text x="155" y="34" class="cls-header">Venta</text>
+    
+    <text x="15" y="62" class="cls-body">- numeroFactura: String</text>
+    <text x="15" y="78" class="cls-body">- filial: String (Perú / Chile)</text>
+    <text x="15" y="94" class="cls-body">- sku: String</text>
+    <text x="15" y="110" class="cls-body">- cantidad: int</text>
+    <text x="15" y="126" class="cls-body">- precioUnitarioLocal: double</text>
+    <text x="15" y="142" class="cls-body">- totalLocal: double</text>
+    <text x="15" y="158" class="cls-body">- totalEur: double</text>
+    <text x="15" y="174" class="cls-body">- cliente: String</text>
+    <line x1="0" y1="184" x2="310" y2="184" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="204" class="cls-body">+ getTotalEur(): double</text>
+    <text x="15" y="222" class="cls-body">+ getFilial(): String</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PAQUETE 2: SERVICE -->
+  <!-- ========================================================================= -->
+  <rect x="40" y="730" width="340" height="580" rx="10" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
+  <rect x="40" y="730" width="340" height="42" rx="10" fill="#F0FDFA"/>
+  <text x="55" y="752" class="pkg-header">📁 Paquete: service</text>
+  <text x="55" y="766" class="pkg-sub">Lógica de registro, control de stock y conversión EUR</text>
+
+  <!-- Cls: ProductoService -->
+  <g transform="translate(55, 790)">
+    <rect x="0" y="0" width="310" height="220" rx="6" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
+    <rect x="0" y="0" width="310" height="42" rx="6" fill="#0D9488"/>
+    <text x="155" y="18" class="cls-stereo">&lt;&lt;Service&gt;&gt;</text>
+    <text x="155" y="34" class="cls-header">ProductoService</text>
+    
+    <text x="15" y="62" class="cls-body">- dataStore: DataStore</text>
+    <line x1="0" y1="72" x2="310" y2="72" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="94" class="cls-body">+ registrarProducto(p): void</text>
+    <text x="15" y="114" class="cls-body">+ descontarStock(sku, cant): void</text>
+    <text x="15" y="134" class="cls-body">+ validarDisponibilidad(sku): bool</text>
+    <text x="15" y="154" class="cls-body">+ listarCatalogo(): List&lt;Producto&gt;</text>
+    <text x="15" y="174" class="cls-body">+ buscarPorSku(sku): Producto</text>
+  </g>
+
+  <!-- Cls: VentaService -->
+  <g transform="translate(55, 1030)">
+    <rect x="0" y="0" width="310" height="250" rx="6" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
+    <rect x="0" y="0" width="310" height="42" rx="6" fill="#0D9488"/>
+    <text x="155" y="18" class="cls-stereo">&lt;&lt;Service&gt;&gt;</text>
+    <text x="155" y="34" class="cls-header">VentaService</text>
+    
+    <text x="15" y="62" class="cls-body">- config: CorporateConfig</text>
+    <text x="15" y="80" class="cls-body">- productoService: ProductoService</text>
+    <line x1="0" y1="90" x2="310" y2="90" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="112" class="cls-body">+ registrarVenta(v: Venta): boolean</text>
+    <text x="15" y="132" class="cls-body">+ convertirAEuros(monto, mon): double</text>
+    <text x="15" y="152" class="cls-body">+ listarVentas(): List&lt;Venta&gt;</text>
+    <text x="15" y="172" class="cls-body">+ getVentasPorFilial(filial): List</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PAQUETE 3: PATTERNS (CREACIONALES Y ESTRUCTURALES) -->
+  <!-- ========================================================================= -->
+  <rect x="400" y="110" width="1560" height="1200" rx="10" fill="#FFFFFF" stroke="#1A365D" stroke-width="2.5"/>
+  <rect x="400" y="110" width="1560" height="42" rx="10" fill="#F1F5F9"/>
+  <text x="420" y="132" class="pkg-header">📁 Paquete: patterns (Patrones de Diseño GoF)</text>
+  <text x="420" y="146" class="pkg-sub">Patrones Creacionales (Singleton, Prototype, Builder) y Estructurales (Composite, Decorator, Facade)</text>
+
+  <!-- SUB-SECCIÓN: PATRONES CREACIONALES -->
+  <rect x="420" y="165" width="740" height="1120" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-dasharray="6 4"/>
+  <rect x="430" y="175" width="230" height="24" rx="4" fill="#1A365D"/>
+  <text x="545" y="191" class="pattern-tag" text-anchor="middle">PATRONES CREACIONALES</text>
+
+  <!-- 1. SINGLETON -->
+  <g transform="translate(435, 215)">
+    <rect x="0" y="0" width="340" height="240" rx="6" fill="#FFFFFF" stroke="#1A365D" stroke-width="2"/>
+    <rect x="0" y="0" width="340" height="42" rx="6" fill="#1A365D"/>
+    <text x="170" y="18" class="cls-stereo">&lt;&lt;Singleton&gt;&gt;</text>
+    <text x="170" y="34" class="cls-header">CorporateConfig</text>
+    
+    <text x="15" y="62" class="cls-body">- instance: CorporateConfig [1]</text>
+    <text x="15" y="78" class="cls-body">- ratePenToEur: double = 4.13</text>
+    <text x="15" y="94" class="cls-body">- rateCnyToEur: double = 7.82</text>
+    <text x="15" y="110" class="cls-body">- rateUsdToEur: double = 1.08</text>
+    <line x1="0" y1="120" x2="340" y2="120" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="140" class="cls-body">+ getInstance(): CorporateConfig</text>
+    <text x="15" y="158" class="cls-body">+ convert(amount, currency): double</text>
+    <text x="15" y="176" class="cls-body">+ updateRates(pen, cny, usd): void</text>
+    <text x="15" y="194" class="cls-body">+ getSubsidiaries(): Map</text>
+  </g>
+
+  <!-- 2. PROTOTYPE -->
+  <g transform="translate(795, 215)">
+    <rect x="0" y="0" width="345" height="90" rx="6" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
+    <rect x="0" y="0" width="345" height="40" rx="6" fill="#0D9488"/>
+    <text x="172" y="16" class="cls-stereo">&lt;&lt;interface&gt;&gt; &lt;&lt;Prototype&gt;&gt;</text>
+    <text x="172" y="32" class="cls-header">ReportPrototype</text>
+    <text x="15" y="64" class="cls-body">+ cloneReport(): ReportPrototype</text>
+  </g>
+
+  <g transform="translate(795, 335)">
+    <rect x="0" y="0" width="345" height="210" rx="6" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
+    <rect x="0" y="0" width="345" height="40" rx="6" fill="#0D9488"/>
+    <text x="172" y="16" class="cls-stereo">&lt;&lt;Concrete Prototype&gt;&gt;</text>
+    <text x="172" y="32" class="cls-header">ReportTemplate</text>
+    
+    <text x="15" y="60" class="cls-body">- id: String</text>
+    <text x="15" y="76" class="cls-body">- name: String (Mensual/Trim/Anual)</text>
+    <text x="15" y="92" class="cls-body">- period: String</text>
+    <text x="15" y="108" class="cls-body">- targetAudience: String</text>
+    <line x1="0" y1="118" x2="345" y2="118" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="138" class="cls-body">+ cloneReport(): ReportTemplate</text>
+    <text x="15" y="156" class="cls-body">+ getName(): String</text>
+  </g>
+
+  <!-- 3. BUILDER -->
+  <g transform="translate(435, 570)">
+    <rect x="0" y="0" width="340" height="130" rx="6" fill="#FFFFFF" stroke="#B45309" stroke-width="2"/>
+    <rect x="0" y="0" width="340" height="40" rx="6" fill="#B45309"/>
+    <text x="170" y="16" class="cls-stereo">&lt;&lt;interface&gt;&gt; &lt;&lt;Builder&gt;&gt;</text>
+    <text x="170" y="32" class="cls-header">ReportBuilder</text>
+    
+    <text x="15" y="60" class="cls-body">+ buildHeader(tpl): ReportBuilder</text>
+    <text x="15" y="78" class="cls-body">+ buildConsolidatedData(p, s): Builder</text>
+    <text x="15" y="96" class="cls-body">+ buildExecutiveSummary(): Builder</text>
+    <text x="15" y="114" class="cls-body">+ getResult(): FinancialReport</text>
+  </g>
+
+  <g transform="translate(435, 725)">
+    <rect x="0" y="0" width="340" height="170" rx="6" fill="#FFFFFF" stroke="#B45309" stroke-width="2"/>
+    <rect x="0" y="0" width="340" height="40" rx="6" fill="#B45309"/>
+    <text x="170" y="16" class="cls-stereo">&lt;&lt;Concrete Builder&gt;&gt;</text>
+    <text x="170" y="32" class="cls-header">StandardReportBuilder</text>
+    
+    <text x="15" y="60" class="cls-body">- report: FinancialReport</text>
+    <line x1="0" y1="70" x2="340" y2="70" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="90" class="cls-body">+ buildHeader(tpl): ReportBuilder</text>
+    <text x="15" y="108" class="cls-body">+ buildConsolidatedData(p, s): Builder</text>
+    <text x="15" y="126" class="cls-body">+ getResult(): FinancialReport</text>
+  </g>
+
+  <g transform="translate(435, 920)">
+    <rect x="0" y="0" width="340" height="200" rx="6" fill="#FFFFFF" stroke="#B45309" stroke-width="2"/>
+    <rect x="0" y="0" width="340" height="40" rx="6" fill="#B45309"/>
+    <text x="170" y="16" class="cls-stereo">&lt;&lt;Complex Product&gt;&gt;</text>
+    <text x="170" y="32" class="cls-header">FinancialReport</text>
+    
+    <text x="15" y="60" class="cls-body">- title: String</text>
+    <text x="15" y="76" class="cls-body">- period: String</text>
+    <text x="15" y="92" class="cls-body">- rootSection: ReportSection</text>
+    <text x="15" y="108" class="cls-body">- watermark: String</text>
+    <line x1="0" y1="118" x2="340" y2="118" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="138" class="cls-body">+ render(): String</text>
+    <text x="15" y="156" class="cls-body">+ getRootSection(): ReportSection</text>
+  </g>
+
+  <!-- SUB-SECCIÓN: PATRONES ESTRUCTURALES -->
+  <rect x="1180" y="165" width="760" height="1120" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-dasharray="6 4"/>
+  <rect x="1190" y="175" width="240" height="24" rx="4" fill="#4F46E5"/>
+  <text x="1310" y="191" class="pattern-tag" text-anchor="middle">PATRONES ESTRUCTURALES</text>
+
+  <!-- 4. FACADE -->
+  <g transform="translate(1195, 215)">
+    <rect x="0" y="0" width="725" height="140" rx="6" fill="#FFFFFF" stroke="#4F46E5" stroke-width="2"/>
+    <rect x="0" y="0" width="725" height="40" rx="6" fill="#4F46E5"/>
+    <text x="362" y="16" class="cls-stereo">&lt;&lt;Facade: Entrada Unificada&gt;&gt;</text>
+    <text x="362" y="32" class="cls-header">ReportFacade</text>
+    
+    <text x="15" y="60" class="cls-body">- productoService: ProductoService   - ventaService: VentaService   - config: CorporateConfig</text>
+    <line x1="0" y1="70" x2="725" y2="70" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="92" class="cls-body">+ generateReport(templateId, enableWatermark, enableSignature): FinancialReport</text>
+    <text x="15" y="112" class="cls-body">+ getAvailableTemplates(): List&lt;ReportTemplate&gt;</text>
+  </g>
+
+  <!-- 5. COMPOSITE -->
+  <g transform="translate(1195, 385)">
+    <rect x="0" y="0" width="725" height="100" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <rect x="0" y="0" width="725" height="40" rx="6" fill="#047857"/>
+    <text x="362" y="16" class="cls-stereo">&lt;&lt;interface&gt;&gt; &lt;&lt;Composite&gt;&gt;</text>
+    <text x="362" y="32" class="cls-header">ReportComponent</text>
+    
+    <text x="15" y="60" class="cls-body">+ getTitle(): String        + getTotalEur(): double        + renderHtml(): String</text>
+  </g>
+
+  <g transform="translate(1195, 510)">
+    <rect x="0" y="0" width="345" height="160" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <rect x="0" y="0" width="345" height="40" rx="6" fill="#047857"/>
+    <text x="172" y="16" class="cls-stereo">&lt;&lt;Leaf: Ítem Contable&gt;&gt;</text>
+    <text x="172" y="32" class="cls-header">ReportItem</text>
+    
+    <text x="15" y="60" class="cls-body">- concept: String</text>
+    <text x="15" y="78" class="cls-body">- amountEur: double</text>
+    <line x1="0" y1="88" x2="345" y2="88" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="110" class="cls-body">+ getTotalEur(): double</text>
+    <text x="15" y="128" class="cls-body">+ renderHtml(): String</text>
+  </g>
+
+  <g transform="translate(1575, 510)">
+    <rect x="0" y="0" width="345" height="210" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <rect x="0" y="0" width="345" height="40" rx="6" fill="#047857"/>
+    <text x="172" y="16" class="cls-stereo">&lt;&lt;Composite: Sección Jerárquica&gt;&gt;</text>
+    <text x="172" y="32" class="cls-header">ReportSection</text>
+    
+    <text x="15" y="60" class="cls-body">- sectionTitle: String</text>
+    <text x="15" y="78" class="cls-body">- children: List&lt;ReportComponent&gt;</text>
+    <line x1="0" y1="88" x2="345" y2="88" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="110" class="cls-body">+ add(c: ReportComponent): void</text>
+    <text x="15" y="128" class="cls-body">+ getChildren(): List</text>
+    <text x="15" y="146" class="cls-body">+ getTotalEur(): double (Suma recursiva)</text>
+  </g>
+
+  <!-- 6. DECORATOR -->
+  <g transform="translate(1195, 755)">
+    <rect x="0" y="0" width="725" height="120" rx="6" fill="#FFFFFF" stroke="#BE185D" stroke-width="2"/>
+    <rect x="0" y="0" width="725" height="40" rx="6" fill="#BE185D"/>
+    <text x="362" y="16" class="cls-stereo">&lt;&lt;abstract&gt;&gt; &lt;&lt;Decorator&gt;&gt;</text>
+    <text x="362" y="32" class="cls-header">ReportDecorator</text>
+    
+    <text x="15" y="60" class="cls-body"># wrapped: ReportComponent</text>
+    <line x1="0" y1="70" x2="725" y2="70" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="92" class="cls-body">+ renderHtml(): String        + getTotalEur(): double</text>
+  </g>
+
+  <g transform="translate(1195, 905)">
+    <rect x="0" y="0" width="345" height="150" rx="6" fill="#FFFFFF" stroke="#BE185D" stroke-width="2"/>
+    <rect x="0" y="0" width="345" height="40" rx="6" fill="#BE185D"/>
+    <text x="172" y="16" class="cls-stereo">&lt;&lt;Concrete Decorator&gt;&gt;</text>
+    <text x="172" y="32" class="cls-header">WatermarkDecorator</text>
+    
+    <text x="15" y="60" class="cls-body">- watermarkText: String = "CONFIDENCIAL"</text>
+    <line x1="0" y1="70" x2="345" y2="70" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="92" class="cls-body">+ renderHtml(): String (Inyecta marca de agua)</text>
+  </g>
+
+  <g transform="translate(1575, 905)">
+    <rect x="0" y="0" width="345" height="160" rx="6" fill="#FFFFFF" stroke="#BE185D" stroke-width="2"/>
+    <rect x="0" y="0" width="345" height="40" rx="6" fill="#BE185D"/>
+    <text x="172" y="16" class="cls-stereo">&lt;&lt;Concrete Decorator&gt;&gt;</text>
+    <text x="172" y="32" class="cls-header">SignatureDecorator</text>
+    
+    <text x="15" y="60" class="cls-body">- signer: "Fabiola Cadillo / Estefanía Orellana"</text>
+    <text x="15" y="78" class="cls-body">- hash: String (Sello Criptográfico SHA-256)</text>
+    <line x1="0" y1="88" x2="345" y2="88" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="15" y="110" class="cls-body">+ renderHtml(): String (Inyecta tarjeta firma)</text>
+  </g>
+
+  <!-- TARJETA INFORMATIVA DOCENTE -->
+  <g transform="translate(1195, 1100)">
+    <rect x="0" y="0" width="725" height="110" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+    <text x="20" y="30" style="font-family:'Segoe UI',sans-serif;font-size:13px;font-weight:800;fill:#92400E;">🎓 FinanCorp S.A. — Sustentación Universitaria de Software</text>
+    <text x="20" y="55" style="font-family:'Segoe UI',sans-serif;font-size:12px;fill:#1E293B;"><b>Desarrolladoras:</b> Fabiola Cadillo &amp; Estefanía Orellana • <b>Contacto:</b> vv45092612@zegel.pe</text>
+    <text x="20" y="75" style="font-family:'Segoe UI',sans-serif;font-size:12px;fill:#1E293B;"><b>Patrones Creacionales:</b> 1. Singleton (CorporateConfig), 2. Prototype (ReportTemplate), 3. Builder (StandardReportBuilder)</text>
+    <text x="20" y="95" style="font-family:'Segoe UI',sans-serif;font-size:12px;fill:#1E293B;"><b>Patrones Estructurales:</b> 4. Composite (ReportSection/Item), 5. Decorator (Watermark/Signature), 6. Facade (ReportFacade)</text>
+  </g>
+
+  <!-- LÍNEAS / RELACIONES -->
+  <!-- Template ..|> Prototype -->
+  <line x1="967" y1="335" x2="967" y2="310" stroke="#0D9488" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow-impl)"/>
+
+  <!-- StandardBuilder ..|> ReportBuilder -->
+  <line x1="605" y1="725" x2="605" y2="705" stroke="#B45309" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow-impl)"/>
+
+  <!-- Builder -> Product -->
+  <line x1="605" y1="895" x2="605" y2="915" stroke="#B45309" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arrow-use)"/>
+
+  <!-- Item ..|> Component -->
+  <line x1="1367" y1="510" x2="1367" y2="490" stroke="#047857" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow-impl)"/>
+
+  <!-- Section ..|> Component -->
+  <line x1="1747" y1="510" x2="1747" y2="490" stroke="#047857" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow-impl)"/>
+
+  <!-- Decorator ..|> Component -->
+  <line x1="1557" y1="755" x2="1557" y2="490" stroke="#BE185D" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow-impl)"/>
+
+  <!-- Watermark -> Decorator -->
+  <line x1="1367" y1="905" x2="1367" y2="880" stroke="#BE185D" stroke-width="2" marker-end="url(#arrow-inherit)"/>
+
+  <!-- Signature -> Decorator -->
+  <line x1="1747" y1="905" x2="1747" y2="880" stroke="#BE185D" stroke-width="2" marker-end="url(#arrow-inherit)"/>
+
+  <!-- Service -> Model (Ruta limpia por el borde derecho sin cruzar texto) -->
+  <path d="M 365 850 L 380 850 L 380 320 L 368 320" stroke="#0D9488" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrow-use)"/>
+  <path d="M 365 1100 L 385 1100 L 385 580 L 368 580" stroke="#0D9488" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrow-use)"/>
+
+</svg>

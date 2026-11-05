@@ -1,0 +1,157 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .text-title { font-family: 'Segoe UI', Inter, sans-serif; font-size: 16px; font-weight: 700; fill: #1A365D; }
+      .text-sub { font-family: 'Segoe UI', Inter, sans-serif; font-size: 11px; font-weight: 600; fill: #64748B; }
+      .text-menu { font-family: 'Segoe UI', Inter, sans-serif; font-size: 13px; font-weight: 600; fill: #334155; }
+      .text-menu-active { font-family: 'Segoe UI', Inter, sans-serif; font-size: 13px; font-weight: 700; fill: #FFFFFF; }
+      .text-body { font-family: 'Segoe UI', Inter, sans-serif; font-size: 13px; fill: #1E293B; }
+      .text-muted { font-family: 'Segoe UI', Inter, sans-serif; font-size: 12px; fill: #64748B; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="900" fill="#F8FAFC"/>
+  <rect width="1440" height="4" fill="#2B6CB0"/>
+
+  <!-- SIDEBAR (260px) -->
+  <rect x="0" y="4" width="260" height="896" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Brand Sidebar -->
+  <rect x="20" y="24" width="38" height="38" rx="6" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <path d="M28 48V28H48V48H28Z" stroke="#1A365D" stroke-width="2" fill="none"/>
+  <text x="68" y="40" class="text-title" style="font-size: 16px;">FinanCorp SERF</text>
+  <text x="68" y="55" class="text-sub">FISCAL RISK &amp; REPORTING</text>
+  <line x1="0" y1="76" x2="260" y2="76" stroke="#E2E8F0"/>
+
+  <!-- Items del Menú -->
+  <!-- ITEM 1: Inactivo -->
+  <rect x="20" y="98" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <rect x="31" y="98" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <rect x="20" y="109" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <rect x="31" y="109" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <text x="48" y="113" class="text-menu">Resumen y Configuración</text>
+
+  <!-- ITEM 2: Módulo 1 (ACTIVO) -->
+  <rect x="0" y="134" width="260" height="44" fill="#1A365D"/>
+  <rect x="0" y="134" width="4" height="44" fill="#3182CE"/>
+  <path d="M20 152L29 147L38 152V163L29 168L20 163V152Z" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+  <text x="48" y="161" class="text-menu-active">Módulo 1: Productos Importados</text>
+
+  <!-- ITEM 3: Módulo 2 -->
+  <path d="M20 198L22 193H36L38 198V208H20V198Z" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <text x="48" y="204" class="text-menu">Módulo 2: Ventas en Filiales</text>
+
+  <!-- ITEM 4: Módulo 3 -->
+  <line x1="22" y1="248" x2="22" y2="240" stroke="#475569" stroke-width="2"/>
+  <line x1="28" y1="248" x2="28" y2="234" stroke="#475569" stroke-width="2"/>
+  <line x1="34" y1="248" x2="34" y2="242" stroke="#475569" stroke-width="2"/>
+  <text x="48" y="246" class="text-menu">Módulo 3: Reportes Financieros</text>
+
+  <!-- TOPBAR -->
+  <rect x="260" y="4" width="1180" height="60" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="288" y="39" class="text-title" style="font-size: 15px;">FinanCorp S.A. - Sistema SERF (Sede Perú)</text>
+  <rect x="610" y="24" width="105" height="22" rx="4" fill="#EFF6FF" stroke="#BFDBFE"/>
+  <text x="618" y="39" class="text-sub" style="fill: #2B6CB0;">MULTINACIONAL B2B</text>
+
+  <rect x="940" y="18" width="460" height="34" rx="6" fill="#1A365D"/>
+  <rect x="948" y="23" width="90" height="24" rx="4" fill="#2B6CB0"/>
+  <text x="956" y="39" style="font-family:'Segoe UI', sans-serif; font-size:10px; font-weight:800; fill:#FFF;">TASAS OFICIALES</text>
+  <text x="1050" y="39" style="font-family:'Segoe UI', sans-serif; font-size:12px; font-weight:600; fill:#F1F5F9;">1 EUR = 4.13 PEN | 1 EUR = 7.82 CNY | 1 EUR = 1.08 USD</text>
+
+  <!-- CONTENIDO: Módulo 1 -->
+  <!-- Formulario de Alta de Lotes -->
+  <g transform="translate(288, 88)">
+    <rect x="0" y="0" width="550" height="680" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+    <rect x="0" y="0" width="550" height="46" rx="8" fill="#FAFAFC"/>
+    <text x="20" y="29" class="text-title" style="font-size:14px;">Dar de Alta Lote Importado desde Shenzhen</text>
+    <rect x="420" y="12" width="115" height="22" rx="4" fill="#FEF9C3"/>
+    <text x="430" y="27" class="text-sub" style="fill:#854D0E;">ORIGEN CHINA</text>
+
+    <!-- Campos -->
+    <text x="20" y="75" class="text-muted">Código SKU *</text>
+    <rect x="20" y="86" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="109" class="text-body">SKU-LAP-99</text>
+
+    <text x="285" y="75" class="text-muted">Categoría *</text>
+    <rect x="285" y="86" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="297" y="109" class="text-body">Laptop</text>
+
+    <text x="20" y="145" class="text-muted">Nombre del Producto *</text>
+    <rect x="20" y="156" width="510" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="179" class="text-body">Laptop Ultrabook ThinkZen 15 Enterprise</text>
+
+    <text x="20" y="215" class="text-muted">Descripción Técnica</text>
+    <rect x="20" y="226" width="510" height="54" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="250" class="text-body">Intel i7 13700H, 32GB RAM DDR5, 1TB NVMe, Pantalla OLED 2.8K</text>
+
+    <text x="20" y="305" class="text-muted">Costo Importación (CNY) *</text>
+    <rect x="20" y="316" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="339" class="text-body" style="font-weight:700;">4,500.00 CNY</text>
+    <rect x="20" y="358" width="245" height="24" rx="4" fill="#EFF6FF"/>
+    <text x="28" y="374" class="text-sub" style="fill:#2B6CB0;">Conversión en vivo: 575.45 €</text>
+
+    <text x="285" y="305" class="text-muted">Precio Sugerido Local (EUR) *</text>
+    <rect x="285" y="316" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="297" y="339" class="text-body">1,100.00 €</text>
+
+    <text x="20" y="405" class="text-muted">Proveedor Shenzhen *</text>
+    <rect x="20" y="416" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="439" class="text-body">Shenzhen Global Tech Ltd</text>
+
+    <text x="285" y="405" class="text-muted">Fecha de Lote *</text>
+    <rect x="285" y="416" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="297" y="439" class="text-body">2026-11-02</text>
+
+    <text x="20" y="475" class="text-muted">Stock Inicial (Defensivo: ≥ 0) *</text>
+    <rect x="20" y="486" width="510" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="509" class="text-body" style="font-weight:700;">35 unidades</text>
+
+    <rect x="20" y="540" width="230" height="40" rx="6" fill="#1A365D"/>
+    <text x="45" y="565" style="font-family:'Segoe UI', sans-serif; font-size:13px; font-weight:700; fill:#FFF;">✓ Registrar Producto</text>
+
+    <rect x="265" y="540" width="265" height="40" rx="6" fill="#FFF" stroke="#E11D48"/>
+    <text x="278" y="565" style="font-family:'Segoe UI', sans-serif; font-size:11px; font-weight:700; fill:#E11D48;">⚠️ Probar Validación Defensiva</text>
+  </g>
+
+  <!-- Catálogo de Productos Registrados -->
+  <g transform="translate(858, 88)">
+    <rect x="0" y="0" width="550" height="680" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+    <rect x="0" y="0" width="550" height="46" rx="8" fill="#FAFAFC"/>
+    <text x="20" y="29" class="text-title" style="font-size:14px;">Catálogo Consolidado de Shenzhen</text>
+    <rect x="420" y="12" width="115" height="22" rx="4" fill="#E0F2FE"/>
+    <text x="430" y="27" class="text-sub" style="fill:#0369A1;">4 PRODUCTOS</text>
+
+    <rect x="20" y="60" width="510" height="30" fill="#F1F5F9"/>
+    <text x="30" y="80" class="text-sub">SKU</text>
+    <text x="130" y="80" class="text-sub">PRODUCTO</text>
+    <text x="320" y="80" class="text-sub">COSTO CNY</text>
+    <text x="430" y="80" class="text-sub">COSTO EUR</text>
+
+    <!-- Item 1 -->
+    <text x="30" y="115" class="text-body" style="font-weight:700;">SKU-LAP-01</text>
+    <text x="130" y="115" class="text-body">Laptop ThinkEnterprise</text>
+    <text x="320" y="115" class="text-body">4,500 CNY</text>
+    <text x="430" y="115" class="text-body" style="font-weight:700; fill:#2B6CB0;">575.45 €</text>
+    <line x1="20" y1="130" x2="530" y2="130" stroke="#E2E8F0"/>
+
+    <!-- Item 2 -->
+    <text x="30" y="155" class="text-body" style="font-weight:700;">SKU-PHO-02</text>
+    <text x="130" y="155" class="text-body">Smartphone FinanPro 5G</text>
+    <text x="320" y="155" class="text-body">2,200 CNY</text>
+    <text x="430" y="155" class="text-body" style="font-weight:700; fill:#2B6CB0;">281.33 €</text>
+    <line x1="20" y1="170" x2="530" y2="170" stroke="#E2E8F0"/>
+
+    <!-- Item 3 -->
+    <text x="30" y="195" class="text-body" style="font-weight:700;">SKU-NET-03</text>
+    <text x="130" y="195" class="text-body">Router Gigabit AX3000</text>
+    <text x="320" y="195" class="text-body">550 CNY</text>
+    <text x="430" y="195" class="text-body" style="font-weight:700; fill:#2B6CB0;">70.33 €</text>
+    <line x1="20" y1="210" x2="530" y2="210" stroke="#E2E8F0"/>
+
+    <!-- Item 4 -->
+    <text x="30" y="235" class="text-body" style="font-weight:700;">SKU-ACC-04</text>
+    <text x="130" y="235" class="text-body">Docking Station Multiport</text>
+    <text x="320" y="235" class="text-body">180 CNY</text>
+    <text x="430" y="235" class="text-body" style="font-weight:700; fill:#2B6CB0;">23.02 €</text>
+  </g>
+</svg>

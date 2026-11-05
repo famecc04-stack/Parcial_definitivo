@@ -1,0 +1,387 @@
+<svg width="2000" height="1350" viewBox="0 0 2000 1350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title-main { font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: 800; fill: #1A365D; }
+      .title-sub { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: 600; fill: #2B6CB0; }
+      .pkg-title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 700; fill: #475569; }
+      .cls-header { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; text-anchor: middle; }
+      .cls-stereo { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #E2E8F0; text-anchor: middle; }
+      .cls-body { font-family: 'Consolas', 'Courier New', monospace; font-size: 11.5px; fill: #1E293B; }
+      .edge-label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #475569; }
+      .badge-txt { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; font-weight: 700; fill: #FFFFFF; }
+    </style>
+    <marker id="arrow-impl" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <polygon points="0 0, 10 6, 0 12" fill="#FFFFFF" stroke="#0D9488" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-inherit" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <polygon points="0 0, 10 6, 0 12" fill="#FFFFFF" stroke="#BE185D" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-use" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <polyline points="0 1, 8 5, 0 9" fill="none" stroke="#4F46E5" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamond-comp" markerWidth="16" markerHeight="12" refX="1" refY="6" orient="auto">
+      <polygon points="0 6, 7 1, 14 6, 7 11" fill="#047857" stroke="#047857" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamond-aggr" markerWidth="16" markerHeight="12" refX="1" refY="6" orient="auto">
+      <polygon points="0 6, 7 1, 14 6, 7 11" fill="#FFFFFF" stroke="#BE185D" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <!-- Fondo General -->
+  <rect width="2000" height="1350" fill="#F8FAFC"/>
+
+  <!-- Header Banner -->
+  <rect x="40" y="20" width="1920" height="70" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="40" y="20" width="8" height="70" rx="4" fill="#1A365D"/>
+  <text x="65" y="50" class="title-main">FinanCorp S.A. — Sistema SERF (Fiscal Risk &amp; Reporting)</text>
+  <text x="65" y="74" class="title-sub">DIAGRAMA DE CLASES UML DE ARQUITECTURA Y PATRONES DE DISEÑO GoF • MONEDA BASE: EUROS (EUR)</text>
+
+  <!-- Paquete 1: Config & Repo -->
+  <rect x="40" y="110" width="360" height="1200" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-dasharray="6 4" stroke-width="1.5"/>
+  <text x="55" y="132" class="pkg-title">📦 com.financorp.serf.config &amp; repository</text>
+
+  <!-- Cls: CorporateConfig (Singleton) -->
+  <g id="cls-corporate-config">
+    <rect x="60" y="150" width="320" height="250" rx="6" fill="#FFFFFF" stroke="#1A365D" stroke-width="2"/>
+    <rect x="60" y="150" width="320" height="48" rx="6" fill="#1A365D"/>
+    <text x="220" y="170" class="cls-stereo">&lt;&lt;Singleton&gt;&gt;</text>
+    <text x="220" y="188" class="cls-header">CorporateConfig</text>
+    
+    <text x="75" y="218" class="cls-body">- instance: CorporateConfig [1]</text>
+    <text x="75" y="236" class="cls-body">- ratePenToEur: double = 4.13</text>
+    <text x="75" y="254" class="cls-body">- rateCnyToEur: double = 7.82</text>
+    <text x="75" y="272" class="cls-body">- rateUsdToEur: double = 1.08</text>
+    <text x="75" y="290" class="cls-body">- subsidiaries: Map&lt;String, String&gt;</text>
+    <line x1="60" y1="302" x2="380" y2="302" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="75" y="322" class="cls-body">+ getInstance(): CorporateConfig</text>
+    <text x="75" y="340" class="cls-body">+ convert(amount, currency): double</text>
+    <text x="75" y="358" class="cls-body">+ updateRates(pen, cny, usd): void</text>
+    <text x="75" y="376" class="cls-body">+ getSubsidiaries(): Map&lt;String, String&gt;</text>
+  </g>
+
+  <!-- Cls: DataStore -->
+  <g id="cls-datastore">
+    <rect x="60" y="440" width="320" height="240" rx="6" fill="#FFFFFF" stroke="#1A365D" stroke-width="2"/>
+    <rect x="60" y="440" width="320" height="48" rx="6" fill="#1A365D"/>
+    <text x="220" y="460" class="cls-stereo">&lt;&lt;Repository / Thread-Safe&gt;&gt;</text>
+    <text x="220" y="478" class="cls-header">DataStore</text>
+    
+    <text x="75" y="508" class="cls-body">- products: ConcurrentMap&lt;String, Product&gt;</text>
+    <text x="75" y="526" class="cls-body">- sales: CopyOnWriteArrayList&lt;Sale&gt;</text>
+    <line x1="60" y1="538" x2="380" y2="538" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="75" y="558" class="cls-body">+ addProduct(p: Product): void</text>
+    <text x="75" y="576" class="cls-body">+ getAllProducts(): List&lt;Product&gt;</text>
+    <text x="75" y="594" class="cls-body">+ getProduct(sku: String): Product</text>
+    <text x="75" y="612" class="cls-body">+ recordSale(s: Sale): boolean</text>
+    <text x="75" y="630" class="cls-body">+ getAllSales(): List&lt;Sale&gt;</text>
+  </g>
+
+  <!-- Cls: Web / App -->
+  <g id="cls-web-app">
+    <rect x="60" y="720" width="320" height="220" rx="6" fill="#FFFFFF" stroke="#475569" stroke-width="2"/>
+    <rect x="60" y="720" width="320" height="48" rx="6" fill="#475569"/>
+    <text x="220" y="740" class="cls-stereo">&lt;&lt;HTTP Server: 8080&gt;&gt;</text>
+    <text x="220" y="758" class="cls-header">App &amp; ApiOperations</text>
+    
+    <text x="75" y="788" class="cls-body">- server: HttpServer</text>
+    <text x="75" y="806" class="cls-body">- facade: ReportFacade</text>
+    <line x1="60" y1="818" x2="380" y2="818" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="75" y="838" class="cls-body">+ handleRates(exchange): void</text>
+    <text x="75" y="856" class="cls-body">+ handleProducts(exchange): void</text>
+    <text x="75" y="874" class="cls-body">+ handleSales(exchange): void</text>
+    <text x="75" y="892" class="cls-body">+ handleGenerateReport(exchange): void</text>
+  </g>
+
+  <!-- Paquete 2: Model & Prototype -->
+  <rect x="420" y="110" width="350" height="600" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-dasharray="6 4" stroke-width="1.5"/>
+  <text x="435" y="132" class="pkg-title">📦 com.financorp.serf.model</text>
+
+  <!-- Cls: Product -->
+  <g id="cls-product">
+    <rect x="440" y="150" width="310" height="260" rx="6" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="2"/>
+    <rect x="440" y="150" width="310" height="48" rx="6" fill="#2B6CB0"/>
+    <text x="595" y="170" class="cls-stereo">&lt;&lt;Entity: Módulo 1 Shenzhen&gt;&gt;</text>
+    <text x="595" y="188" class="cls-header">Product</text>
+    
+    <text x="455" y="218" class="cls-body">- sku: String</text>
+    <text x="455" y="234" class="cls-body">- name: String</text>
+    <text x="455" y="250" class="cls-body">- category: String</text>
+    <text x="455" y="266" class="cls-body">- costCny: double</text>
+    <text x="455" y="282" class="cls-body">- suggestedPriceEur: double</text>
+    <text x="455" y="298" class="cls-body">- supplier: String</text>
+    <text x="455" y="314" class="cls-body">- stock: int</text>
+    <line x1="440" y1="324" x2="750" y2="324" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="455" y="342" class="cls-body">+ getCostEur(): double</text>
+    <text x="455" y="358" class="cls-body">+ reduceStock(qty: int): void</text>
+    <text x="455" y="374" class="cls-body">+ validateDefensive(): void</text>
+  </g>
+
+  <!-- Cls: Sale -->
+  <g id="cls-sale">
+    <rect x="440" y="440" width="310" height="250" rx="6" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="2"/>
+    <rect x="440" y="440" width="310" height="48" rx="6" fill="#2B6CB0"/>
+    <text x="595" y="460" class="cls-stereo">&lt;&lt;Entity: Módulo 2 Filiales&gt;&gt;</text>
+    <text x="595" y="478" class="cls-header">Sale</text>
+    
+    <text x="455" y="506" class="cls-body">- invoiceNumber: String</text>
+    <text x="455" y="522" class="cls-body">- subsidiary: String (Perú / Chile)</text>
+    <text x="455" y="538" class="cls-body">- sku: String</text>
+    <text x="455" y="554" class="cls-body">- quantity: int</text>
+    <text x="455" y="570" class="cls-body">- totalLocal: double</text>
+    <text x="455" y="586" class="cls-body">- totalEur: double</text>
+    <line x1="440" y1="596" x2="750" y2="596" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="455" y="616" class="cls-body">+ getTotalEur(): double</text>
+    <text x="455" y="632" class="cls-body">+ getSubsidiary(): String</text>
+  </g>
+
+  <!-- Paquete 3: Prototype -->
+  <rect x="420" y="730" width="350" height="580" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-dasharray="6 4" stroke-width="1.5"/>
+  <text x="435" y="752" class="pkg-title">📦 com.financorp.serf.pattern.prototype</text>
+
+  <!-- Cls: ReportPrototype -->
+  <g id="cls-report-proto">
+    <rect x="440" y="770" width="310" height="95" rx="6" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
+    <rect x="440" y="770" width="310" height="48" rx="6" fill="#0D9488"/>
+    <text x="595" y="790" class="cls-stereo">&lt;&lt;interface&gt;&gt; &lt;&lt;Prototype&gt;&gt;</text>
+    <text x="595" y="808" class="cls-header">ReportPrototype</text>
+    <text x="455" y="842" class="cls-body">+ cloneReport(): ReportPrototype</text>
+  </g>
+
+  <!-- Cls: ReportTemplate -->
+  <g id="cls-report-template">
+    <rect x="440" y="930" width="310" height="220" rx="6" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
+    <rect x="440" y="930" width="310" height="48" rx="6" fill="#0D9488"/>
+    <text x="595" y="950" class="cls-stereo">&lt;&lt;Concrete Prototype&gt;&gt;</text>
+    <text x="595" y="968" class="cls-header">ReportTemplate</text>
+    
+    <text x="455" y="998" class="cls-body">- id: String</text>
+    <text x="455" y="1016" class="cls-body">- name: String</text>
+    <text x="455" y="1034" class="cls-body">- period: String</text>
+    <text x="455" y="1052" class="cls-body">- targetAudience: String</text>
+    <line x1="440" y1="1064" x2="750" y2="1064" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="455" y="1084" class="cls-body">+ cloneReport(): ReportTemplate</text>
+    <text x="455" y="1102" class="cls-body">+ getName(): String</text>
+  </g>
+
+  <!-- Paquete 4: Facade & Builder -->
+  <rect x="790" y="110" width="340" height="450" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-dasharray="6 4" stroke-width="1.5"/>
+  <text x="805" y="132" class="pkg-title">📦 com.financorp.serf.pattern.facade</text>
+
+  <!-- Cls: ReportFacade -->
+  <g id="cls-facade">
+    <rect x="805" y="150" width="310" height="220" rx="6" fill="#FFFFFF" stroke="#4F46E5" stroke-width="2"/>
+    <rect x="805" y="150" width="310" height="48" rx="6" fill="#4F46E5"/>
+    <text x="960" y="170" class="cls-stereo">&lt;&lt;Facade&gt;&gt;</text>
+    <text x="960" y="188" class="cls-header">ReportFacade</text>
+    
+    <text x="820" y="218" class="cls-body">- dataStore: DataStore</text>
+    <text x="820" y="236" class="cls-body">- config: CorporateConfig</text>
+    <text x="820" y="254" class="cls-body">- templateRegistry: Map&lt;String, ...&gt;</text>
+    <line x1="805" y1="266" x2="1115" y2="266" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="820" y="286" class="cls-body">+ generateReport(id, wm, sig): Report</text>
+    <text x="820" y="304" class="cls-body">+ getAvailableTemplates(): List&lt;...&gt;</text>
+  </g>
+
+  <!-- Paquete 5: Builder -->
+  <rect x="790" y="580" width="340" height="730" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-dasharray="6 4" stroke-width="1.5"/>
+  <text x="805" y="602" class="pkg-title">📦 com.financorp.serf.pattern.builder</text>
+
+  <!-- Cls: ReportBuilder (Interface) -->
+  <g id="cls-report-builder">
+    <rect x="805" y="620" width="310" height="150" rx="6" fill="#FFFFFF" stroke="#B45309" stroke-width="2"/>
+    <rect x="805" y="620" width="310" height="48" rx="6" fill="#B45309"/>
+    <text x="960" y="640" class="cls-stereo">&lt;&lt;interface&gt;&gt; &lt;&lt;Builder&gt;&gt;</text>
+    <text x="960" y="658" class="cls-header">ReportBuilder</text>
+    
+    <text x="820" y="688" class="cls-body">+ buildHeader(tpl): ReportBuilder</text>
+    <text x="820" y="706" class="cls-body">+ buildConsolidatedData(p, s): Builder</text>
+    <text x="820" y="724" class="cls-body">+ buildExecutiveSummary(): Builder</text>
+    <text x="820" y="742" class="cls-body">+ getResult(): FinancialReport</text>
+  </g>
+
+  <!-- Cls: StandardReportBuilder -->
+  <g id="cls-std-builder">
+    <rect x="805" y="830" width="310" height="180" rx="6" fill="#FFFFFF" stroke="#B45309" stroke-width="2"/>
+    <rect x="805" y="830" width="310" height="48" rx="6" fill="#B45309"/>
+    <text x="960" y="850" class="cls-stereo">&lt;&lt;Concrete Builder&gt;&gt;</text>
+    <text x="960" y="868" class="cls-header">StandardReportBuilder</text>
+    
+    <text x="820" y="898" class="cls-body">- report: FinancialReport</text>
+    <line x1="805" y1="910" x2="1115" y2="910" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="820" y="930" class="cls-body">+ buildHeader(tpl): ReportBuilder</text>
+    <text x="820" y="948" class="cls-body">+ buildConsolidatedData(p, s): Builder</text>
+    <text x="820" y="966" class="cls-body">+ getResult(): FinancialReport</text>
+  </g>
+
+  <!-- Cls: FinancialReport (Product) -->
+  <g id="cls-fin-report">
+    <rect x="805" y="1050" width="310" height="210" rx="6" fill="#FFFFFF" stroke="#B45309" stroke-width="2"/>
+    <rect x="805" y="1050" width="310" height="48" rx="6" fill="#B45309"/>
+    <text x="960" y="1070" class="cls-stereo">&lt;&lt;Complex Product&gt;&gt;</text>
+    <text x="960" y="1088" class="cls-header">FinancialReport</text>
+    
+    <text x="820" y="1118" class="cls-body">- title: String</text>
+    <text x="820" y="1134" class="cls-body">- period: String</text>
+    <text x="820" y="1150" class="cls-body">- rootSection: ReportSection</text>
+    <text x="820" y="1166" class="cls-body">- watermark: String</text>
+    <line x1="805" y1="1176" x2="1115" y2="1176" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="820" y="1196" class="cls-body">+ render(): String</text>
+    <text x="820" y="1212" class="cls-body">+ getRootSection(): ReportSection</text>
+  </g>
+
+  <!-- Paquete 6: Composite -->
+  <rect x="1150" y="110" width="410" height="540" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-dasharray="6 4" stroke-width="1.5"/>
+  <text x="1165" y="132" class="pkg-title">📦 com.financorp.serf.pattern.composite</text>
+
+  <!-- Cls: ReportComponent -->
+  <g id="cls-comp-intf">
+    <rect x="1170" y="150" width="370" height="120" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <rect x="1170" y="150" width="370" height="48" rx="6" fill="#047857"/>
+    <text x="1355" y="170" class="cls-stereo">&lt;&lt;interface&gt;&gt; &lt;&lt;Composite&gt;&gt;</text>
+    <text x="1355" y="188" class="cls-header">ReportComponent</text>
+    
+    <text x="1185" y="218" class="cls-body">+ getTitle(): String</text>
+    <text x="1185" y="236" class="cls-body">+ getTotalEur(): double</text>
+    <text x="1185" y="254" class="cls-body">+ renderHtml(): String</text>
+  </g>
+
+  <!-- Cls: ReportItem (Leaf) -->
+  <g id="cls-item">
+    <rect x="1170" y="330" width="175" height="170" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <rect x="1170" y="330" width="175" height="48" rx="6" fill="#047857"/>
+    <text x="1257" y="350" class="cls-stereo">&lt;&lt;Leaf&gt;&gt;</text>
+    <text x="1257" y="368" class="cls-header">ReportItem</text>
+    
+    <text x="1182" y="398" class="cls-body">- concept: String</text>
+    <text x="1182" y="416" class="cls-body">- amountEur: double</text>
+    <line x1="1170" y1="428" x2="1345" y2="428" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="1182" y="448" class="cls-body">+ getTotalEur(): double</text>
+    <text x="1182" y="466" class="cls-body">+ renderHtml(): String</text>
+  </g>
+
+  <!-- Cls: ReportSection (Composite) -->
+  <g id="cls-section">
+    <rect x="1360" y="330" width="180" height="230" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <rect x="1360" y="330" width="180" height="48" rx="6" fill="#047857"/>
+    <text x="1450" y="350" class="cls-stereo">&lt;&lt;Composite&gt;&gt;</text>
+    <text x="1450" y="368" class="cls-header">ReportSection</text>
+    
+    <text x="1372" y="398" class="cls-body">- title: String</text>
+    <text x="1372" y="416" class="cls-body">- children: List</text>
+    <line x1="1360" y1="428" x2="1540" y2="428" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="1372" y="448" class="cls-body">+ add(c): void</text>
+    <text x="1372" y="466" class="cls-body">+ getChildren(): List</text>
+    <text x="1372" y="484" class="cls-body">+ getTotalEur(): dbl</text>
+    <text x="1372" y="502" class="cls-body">+ renderHtml(): String</text>
+  </g>
+
+  <!-- Paquete 7: Decorator -->
+  <rect x="1150" y="670" width="410" height="640" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-dasharray="6 4" stroke-width="1.5"/>
+  <text x="1165" y="692" class="pkg-title">📦 com.financorp.serf.pattern.decorator</text>
+
+  <!-- Cls: ReportDecorator -->
+  <g id="cls-decorator">
+    <rect x="1170" y="710" width="370" height="130" rx="6" fill="#FFFFFF" stroke="#BE185D" stroke-width="2"/>
+    <rect x="1170" y="710" width="370" height="48" rx="6" fill="#BE185D"/>
+    <text x="1355" y="730" class="cls-stereo">&lt;&lt;abstract&gt;&gt; &lt;&lt;Decorator&gt;&gt;</text>
+    <text x="1355" y="748" class="cls-header">ReportDecorator</text>
+    
+    <text x="1185" y="778" class="cls-body"># wrapped: ReportComponent</text>
+    <line x1="1170" y1="788" x2="1540" y2="788" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="1185" y="808" class="cls-body">+ renderHtml(): String</text>
+    <text x="1185" y="824" class="cls-body">+ getTotalEur(): double</text>
+  </g>
+
+  <!-- Cls: WatermarkDecorator -->
+  <g id="cls-watermark">
+    <rect x="1170" y="900" width="175" height="150" rx="6" fill="#FFFFFF" stroke="#BE185D" stroke-width="2"/>
+    <rect x="1170" y="900" width="175" height="48" rx="6" fill="#BE185D"/>
+    <text x="1257" y="920" class="cls-stereo">&lt;&lt;Concrete Decorator&gt;&gt;</text>
+    <text x="1257" y="938" class="cls-header">WatermarkDec.</text>
+    
+    <text x="1182" y="968" class="cls-body">- text: String</text>
+    <line x1="1170" y1="980" x2="1345" y2="980" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="1182" y="1000" class="cls-body">+ renderHtml(): String</text>
+  </g>
+
+  <!-- Cls: SignatureDecorator -->
+  <g id="cls-signature">
+    <rect x="1360" y="900" width="180" height="170" rx="6" fill="#FFFFFF" stroke="#BE185D" stroke-width="2"/>
+    <rect x="1360" y="900" width="180" height="48" rx="6" fill="#BE185D"/>
+    <text x="1450" y="920" class="cls-stereo">&lt;&lt;Concrete Decorator&gt;&gt;</text>
+    <text x="1450" y="938" class="cls-header">SignatureDec.</text>
+    
+    <text x="1372" y="968" class="cls-body">- signer: String</text>
+    <text x="1372" y="986" class="cls-body">- hash: String</text>
+    <line x1="1360" y1="998" x2="1540" y2="998" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="1372" y="1018" class="cls-body">+ renderHtml(): String</text>
+  </g>
+
+  <!-- Panel de Autoría y Defensa (Right) -->
+  <g id="panel-authors">
+    <rect x="1580" y="110" width="380" height="540" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+    <rect x="1580" y="110" width="380" height="50" rx="8" fill="#D97706"/>
+    <text x="1770" y="142" class="cls-header">🎓 FinanCorp SERF — Autoras</text>
+
+    <text x="1605" y="185" style="font-family:'Segoe UI',sans-serif;font-size:14px;font-weight:700;fill:#92400E;">Estudiantes / Desarrolladoras:</text>
+    <text x="1605" y="210" style="font-family:'Segoe UI',sans-serif;font-size:15px;font-weight:800;fill:#1E293B;">• Fabiola Cadillo</text>
+    <text x="1605" y="235" style="font-family:'Segoe UI',sans-serif;font-size:15px;font-weight:800;fill:#1E293B;">• Estefanía Orellana</text>
+    <text x="1605" y="260" style="font-family:'Consolas',monospace;font-size:12px;fill:#B45309;">vv45092612@zegel.pe</text>
+
+    <line x1="1600" y1="280" x2="1940" y2="280" stroke="#FDE68A" stroke-width="1.5"/>
+
+    <text x="1605" y="305" style="font-family:'Segoe UI',sans-serif;font-size:13px;font-weight:700;fill:#92400E;">Los 6 Patrones GoF Implementados:</text>
+    
+    <text x="1605" y="335" style="font-family:'Segoe UI',sans-serif;font-size:12px;fill:#1E293B;"><tspan font-weight="700" fill="#1A365D">1. Singleton:</tspan> CorporateConfig (Tasas)</text>
+    <text x="1605" y="360" style="font-family:'Segoe UI',sans-serif;font-size:12px;fill:#1E293B;"><tspan font-weight="700" fill="#0D9488">2. Prototype:</tspan> ReportTemplate (Clonación)</text>
+    <text x="1605" y="385" style="font-family:'Segoe UI',sans-serif;font-size:12px;fill:#1E293B;"><tspan font-weight="700" fill="#B45309">3. Builder:</tspan> StandardReportBuilder</text>
+    <text x="1605" y="410" style="font-family:'Segoe UI',sans-serif;font-size:12px;fill:#1E293B;"><tspan font-weight="700" fill="#047857">4. Composite:</tspan> ReportSection / Item</text>
+    <text x="1605" y="435" style="font-family:'Segoe UI',sans-serif;font-size:12px;fill:#1E293B;"><tspan font-weight="700" fill="#BE185D">5. Decorator:</tspan> Marca Agua / Firma</text>
+    <text x="1605" y="460" style="font-family:'Segoe UI',sans-serif;font-size:12px;fill:#1E293B;"><tspan font-weight="700" fill="#4F46E5">6. Facade:</tspan> ReportFacade (Unificado)</text>
+
+    <rect x="1605" y="490" width="330" height="42" rx="6" fill="#1A365D"/>
+    <text x="1770" y="516" class="cls-stereo" style="font-size:12px;font-weight:700;fill:#FFFFFF;">✓ 100% Java Backend Nativo</text>
+  </g>
+
+  <!-- LÍNEAS Y RELACIONES UML -->
+  <!-- Template ..|> Prototype -->
+  <line x1="595" y1="930" x2="595" y2="877" stroke="#0D9488" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-impl)"/>
+
+  <!-- Builder ..|> ReportBuilder -->
+  <line x1="960" y1="830" x2="960" y2="782" stroke="#B45309" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-impl)"/>
+
+  <!-- Builder --> FinancialReport -->
+  <line x1="960" y1="1010" x2="960" y2="1038" stroke="#B45309" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arrow-use)"/>
+
+  <!-- Item ..|> Component -->
+  <path d="M 1257 330 L 1257 282" stroke="#047857" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-impl)"/>
+
+  <!-- Section ..|> Component -->
+  <path d="M 1450 330 L 1450 282" stroke="#047857" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-impl)"/>
+
+  <!-- Section contains Component (Composite aggregation) -->
+  <path d="M 1540 400 L 1560 400 L 1560 210 L 1552 210" stroke="#047857" stroke-width="2" marker-start="url(#diamond-comp)"/>
+
+  <!-- Decorator ..|> Component -->
+  <path d="M 1170 740 L 1140 740 L 1140 210 L 1158 210" stroke="#BE185D" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-impl)"/>
+
+  <!-- Decorator wraps Component -->
+  <path d="M 1355 710 L 1355 282" stroke="#BE185D" stroke-width="2" marker-start="url(#diamond-aggr)"/>
+
+  <!-- Watermark to Decorator -->
+  <line x1="1257" y1="900" x2="1257" y2="852" stroke="#BE185D" stroke-width="2" marker-end="url(#arrow-inherit)"/>
+
+  <!-- Signature to Decorator -->
+  <line x1="1450" y1="900" x2="1450" y2="852" stroke="#BE185D" stroke-width="2" marker-end="url(#arrow-inherit)"/>
+
+  <!-- Facade uses Config, DataStore, Builder -->
+  <!-- Ruta limpia hacia CorporateConfig (por el borde superior) -->
+  <path d="M 805 165 L 760 165 L 760 135 L 395 135 L 395 200 L 382 200" stroke="#4F46E5" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrow-use)"/>
+  
+  <!-- Ruta limpia hacia DataStore (entre paquetes, sin cruzar texto) -->
+  <path d="M 805 210 L 765 210 L 765 425 L 395 425 L 395 500 L 382 500" stroke="#4F46E5" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrow-use)"/>
+  
+  <!-- Ruta hacia Builder -->
+  <path d="M 960 370 L 960 608" stroke="#4F46E5" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrow-use)"/>
+
+</svg>

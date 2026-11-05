@@ -1,0 +1,197 @@
+@startuml SERF_FinanCorp_Clases_GoF
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+skinparam roundcorner 8
+skinparam shadowing false
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 11
+
+title FinanCorp S.A. - Sistema SERF (Patrones de Diseño GoF - Moneda Base: EUR)
+
+package "com.financorp.serf.config" {
+    class CorporateConfig << (S,#1A365D) Singleton >> {
+        - {static} instance: CorporateConfig
+        - ratePenToEur: double = 4.13
+        - rateCnyToEur: double = 7.82
+        - rateUsdToEur: double = 1.08
+        - subsidiaries: Map<String, String>
+        - CorporateConfig()
+        + {static} getInstance(): CorporateConfig
+        + convert(amount: double, currency: String): double
+        + updateRates(pen: double, cny: double, usd: double): void
+        + getSubsidiaries(): Map<String, String>
+    }
+}
+
+package "com.financorp.serf.repository" {
+    class DataStore << (R,#1A365D) Repository >> {
+        - products: ConcurrentMap<String, Product>
+        - sales: CopyOnWriteArrayList<Sale>
+        + addProduct(p: Product): void
+        + getAllProducts(): List<Product>
+        + getProduct(sku: String): Product
+        + recordSale(s: Sale): boolean
+        + getAllSales(): List<Sale>
+    }
+}
+
+package "com.financorp.serf.model" {
+    class Product {
+        - sku: String
+        - name: String
+        - description: String
+        - category: String
+        - costCny: double
+        - suggestedPriceEur: double
+        - supplier: String
+        - batchDate: String
+        - stock: int
+        + getCostEur(): double
+        + reduceStock(qty: int): void
+        + validateDefensive(): void
+    }
+
+    class Sale {
+        - invoiceNumber: String
+        - subsidiary: String
+        - sku: String
+        - quantity: int
+        - unitPriceLocal: double
+        - totalLocal: double
+        - totalEur: double
+        - client: String
+        - seller: String
+        - paymentMethod: String
+        - date: String
+        + getTotalEur(): double
+        + getSubsidiary(): String
+    }
+}
+
+package "com.financorp.serf.pattern.prototype" {
+    interface ReportPrototype <<Prototype>> {
+        + cloneReport(): ReportPrototype
+    }
+
+    class ReportTemplate {
+        - id: String
+        - name: String
+        - period: String
+        - targetAudience: String
+        - defaultSections: List<String>
+        + cloneReport(): ReportTemplate
+        + getName(): String
+        + getPeriod(): String
+    }
+}
+
+package "com.financorp.serf.pattern.builder" {
+    interface ReportBuilder <<Builder>> {
+        + buildHeader(tpl: ReportTemplate): ReportBuilder
+        + buildConsolidatedData(p: List<Product>, s: List<Sale>): ReportBuilder
+        + buildExecutiveSummary(): ReportBuilder
+        + getResult(): FinancialReport
+    }
+
+    class StandardReportBuilder {
+        - report: FinancialReport
+        + buildHeader(tpl: ReportTemplate): ReportBuilder
+        + buildConsolidatedData(p: List<Product>, s: List<Sale>): ReportBuilder
+        + buildExecutiveSummary(): ReportBuilder
+        + getResult(): FinancialReport
+    }
+
+    class FinancialReport {
+        - title: String
+        - period: String
+        - audience: String
+        - rootSection: ReportSection
+        - watermark: String
+        - signatory: String
+        + render(): String
+        + setRootSection(s: ReportSection): void
+    }
+}
+
+package "com.financorp.serf.pattern.composite" {
+    interface ReportComponent <<Composite>> {
+        + getTitle(): String
+        + getTotalEur(): double
+        + renderHtml(): String
+    }
+
+    class ReportItem {
+        - concept: String
+        - amountEur: double
+        + getTitle(): String
+        + getTotalEur(): double
+        + renderHtml(): String
+    }
+
+    class ReportSection {
+        - sectionTitle: String
+        - children: List<ReportComponent>
+        + add(c: ReportComponent): void
+        + remove(c: ReportComponent): void
+        + getChildren(): List<ReportComponent>
+        + getTotalEur(): double
+        + renderHtml(): String
+    }
+}
+
+package "com.financorp.serf.pattern.decorator" {
+    abstract class ReportDecorator {
+        # wrapped: ReportComponent
+        + getTitle(): String
+        + getTotalEur(): double
+        + renderHtml(): String
+    }
+
+    class WatermarkDecorator {
+        - watermarkText: String = "CONFIDENCIAL"
+        + renderHtml(): String
+    }
+
+    class SignatureDecorator {
+        - signerName: String
+        - role: String
+        - verificationHash: String
+        + renderHtml(): String
+    }
+}
+
+package "com.financorp.serf.pattern.facade" {
+    class ReportFacade <<Facade>> {
+        - dataStore: DataStore
+        - config: CorporateConfig
+        - templateRegistry: Map<String, ReportTemplate>
+        + generateReport(tId: String, wm: boolean, sig: boolean): FinancialReport
+        + getAvailableTemplates(): List<ReportTemplate>
+    }
+}
+
+' Relaciones
+ReportTemplate .up.|> ReportPrototype : <<implements>>
+StandardReportBuilder .up.|> ReportBuilder : <<implements>>
+StandardReportBuilder ..> FinancialReport : <<creates>>
+FinancialReport o-- ReportSection : <<aggregates>>
+
+ReportItem .up.|> ReportComponent : <<implements>>
+ReportSection .up.|> ReportComponent : <<implements>>
+ReportSection o-- ReportComponent : children [0..*]
+
+ReportDecorator .up.|> ReportComponent : <<implements>>
+ReportDecorator o-- ReportComponent : wrapped [1]
+WatermarkDecorator -up-|> ReportDecorator : <<extends>>
+SignatureDecorator -up-|> ReportDecorator : <<extends>>
+
+ReportFacade ..> CorporateConfig : <<uses>>
+ReportFacade ..> DataStore : <<uses>>
+ReportFacade ..> ReportPrototype : <<clones>>
+ReportFacade ..> ReportBuilder : <<uses>>
+ReportFacade ..> ReportDecorator : <<wraps>>
+
+DataStore *-- Product : [1..*]
+DataStore *-- Sale : [0..*]
+
+@enduml

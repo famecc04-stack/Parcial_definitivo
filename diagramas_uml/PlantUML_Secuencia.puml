@@ -1,0 +1,67 @@
+@startuml SERF_FinanCorp_Secuencia_Reporte
+skinparam monochrome false
+skinparam roundcorner 8
+skinparam shadowing false
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 11
+
+autonumber
+title Generación Dinámica de Reportes Financieros en SERF (Colaboración GoF)
+
+actor "Auditora / Usuario" as User #1A365D
+participant "ApiOperations" as Controller #475569
+participant "ReportFacade\n<<Facade>>" as Facade #4F46E5
+participant "ReportTemplate\n<<Prototype>>" as Prototype #0D9488
+participant "DataStore & Config\n<<Singleton>>" as Store #0284C7
+participant "ReportBuilder\n<<Builder>>" as Builder #B45309
+participant "ReportSection\n<<Composite>>" as Composite #047857
+participant "ReportDecorator\n<<Decorator>>" as Decorator #BE185D
+
+User -> Controller : POST /api/reports/generate (templateId, watermark, sign)
+activate Controller
+
+Controller -> Facade : generateReport(templateId, true, true)
+activate Facade
+
+Facade -> Prototype : cloneReport()
+activate Prototype
+Prototype --> Facade : clonedTemplate (Instancia limpia)
+deactivate Prototype
+
+Facade -> Store : getAllProducts(), getAllSales() + convert(EUR)
+activate Store
+Store --> Facade : Lista consolidada en Euros
+deactivate Store
+
+Facade -> Builder : buildHeader(clonedTemplate)
+activate Builder
+deactivate Builder
+
+Facade -> Builder : buildConsolidatedData(products, sales)
+activate Builder
+Builder -> Composite : new ReportSection("Filiales") & add(ReportItem)
+activate Composite
+Composite --> Builder : rootSection (Árbol Jerárquico)
+deactivate Composite
+deactivate Builder
+
+Facade -> Builder : getResult()
+activate Builder
+Builder --> Facade : FinancialReport (Complejo ensamblado)
+deactivate Builder
+
+Facade -> Decorator : wrapWithWatermark("CONFIDENCIAL")
+activate Decorator
+deactivate Decorator
+
+Facade -> Decorator : wrapWithSignature("Cadillo / Orellana", hash)
+activate Decorator
+deactivate Decorator
+
+Facade --> Controller : decoratedReport (Reporte listo)
+deactivate Facade
+
+Controller --> User : 200 OK JSON (Renderizado en pantalla con sellos)
+deactivate Controller
+
+@enduml

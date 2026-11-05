@@ -1,0 +1,154 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .text-title { font-family: 'Segoe UI', Inter, sans-serif; font-size: 16px; font-weight: 700; fill: #1A365D; }
+      .text-sub { font-family: 'Segoe UI', Inter, sans-serif; font-size: 11px; font-weight: 600; fill: #64748B; }
+      .text-menu { font-family: 'Segoe UI', Inter, sans-serif; font-size: 13px; font-weight: 600; fill: #334155; }
+      .text-menu-active { font-family: 'Segoe UI', Inter, sans-serif; font-size: 13px; font-weight: 700; fill: #FFFFFF; }
+      .text-body { font-family: 'Segoe UI', Inter, sans-serif; font-size: 13px; fill: #1E293B; }
+      .text-muted { font-family: 'Segoe UI', Inter, sans-serif; font-size: 12px; fill: #64748B; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="900" fill="#F8FAFC"/>
+  <rect width="1440" height="4" fill="#2B6CB0"/>
+
+  <!-- SIDEBAR (260px) -->
+  <rect x="0" y="4" width="260" height="896" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Brand Sidebar -->
+  <rect x="20" y="24" width="38" height="38" rx="6" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <path d="M28 48V28H48V48H28Z" stroke="#1A365D" stroke-width="2" fill="none"/>
+  <text x="68" y="40" class="text-title" style="font-size: 16px;">FinanCorp SERF</text>
+  <text x="68" y="55" class="text-sub">FISCAL RISK &amp; REPORTING</text>
+  <line x1="0" y1="76" x2="260" y2="76" stroke="#E2E8F0"/>
+
+  <!-- Items del Menú -->
+  <!-- ITEM 1 -->
+  <rect x="20" y="98" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <rect x="31" y="98" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <rect x="20" y="109" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <rect x="31" y="109" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <text x="48" y="113" class="text-menu">Resumen y Configuración</text>
+
+  <!-- ITEM 2 -->
+  <path d="M20 152L29 147L38 152V163L29 168L20 163V152Z" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <text x="48" y="161" class="text-menu">Módulo 1: Productos Importados</text>
+
+  <!-- ITEM 3: Módulo 2 (ACTIVO) -->
+  <rect x="0" y="180" width="260" height="44" fill="#1A365D"/>
+  <rect x="0" y="180" width="4" height="44" fill="#3182CE"/>
+  <path d="M20 198L22 193H36L38 198V208H20V198Z" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+  <text x="48" y="207" class="text-menu-active">Módulo 2: Ventas en Filiales</text>
+
+  <!-- ITEM 4: Módulo 3 -->
+  <line x1="22" y1="248" x2="22" y2="240" stroke="#475569" stroke-width="2"/>
+  <line x1="28" y1="248" x2="28" y2="234" stroke="#475569" stroke-width="2"/>
+  <line x1="34" y1="248" x2="34" y2="242" stroke="#475569" stroke-width="2"/>
+  <text x="48" y="246" class="text-menu">Módulo 3: Reportes Financieros</text>
+
+  <!-- TOPBAR -->
+  <rect x="260" y="4" width="1180" height="60" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="288" y="39" class="text-title" style="font-size: 15px;">FinanCorp S.A. - Sistema SERF (Sede Perú)</text>
+  <rect x="610" y="24" width="105" height="22" rx="4" fill="#EFF6FF" stroke="#BFDBFE"/>
+  <text x="618" y="39" class="text-sub" style="fill: #2B6CB0;">MULTINACIONAL B2B</text>
+
+  <rect x="940" y="18" width="460" height="34" rx="6" fill="#1A365D"/>
+  <rect x="948" y="23" width="90" height="24" rx="4" fill="#2B6CB0"/>
+  <text x="956" y="39" style="font-family:'Segoe UI', sans-serif; font-size:10px; font-weight:800; fill:#FFF;">TASAS OFICIALES</text>
+  <text x="1050" y="39" style="font-family:'Segoe UI', sans-serif; font-size:12px; font-weight:600; fill:#F1F5F9;">1 EUR = 4.13 PEN | 1 EUR = 7.82 CNY | 1 EUR = 1.08 USD</text>
+
+  <!-- CONTENIDO: Módulo 2 -->
+  <g transform="translate(288, 88)">
+    <rect x="0" y="0" width="550" height="680" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+    <rect x="0" y="0" width="550" height="46" rx="8" fill="#FAFAFC"/>
+    <text x="20" y="29" class="text-title" style="font-size:14px;">Emitir Venta en Filial (Control Atómico de Stock)</text>
+    <rect x="400" y="12" width="135" height="22" rx="4" fill="#F3E8FF"/>
+    <text x="410" y="27" class="text-sub" style="fill:#6B21A8;">MONEDA LOCAL → EUR</text>
+
+    <!-- Campos de Venta -->
+    <text x="20" y="75" class="text-muted">Filial Operativa *</text>
+    <rect x="20" y="86" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="109" class="text-body" style="font-weight:700;">Filial Perú (PEN)</text>
+
+    <text x="285" y="75" class="text-muted">Número de Factura *</text>
+    <rect x="285" y="86" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="297" y="109" class="text-body">B001-000550</text>
+
+    <text x="20" y="145" class="text-muted">Producto a Vender *</text>
+    <rect x="20" y="156" width="510" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="179" class="text-body">SKU-LAP-01 - Laptop ThinkEnterprise X1 (Stock: 23 unids)</text>
+
+    <text x="20" y="215" class="text-muted">Cantidad *</text>
+    <rect x="20" y="226" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="249" class="text-body" style="font-weight:700;">2 unidades</text>
+
+    <text x="285" y="215" class="text-muted">Precio Unitario (PEN) *</text>
+    <rect x="285" y="226" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="297" y="249" class="text-body">4,200.00 PEN</text>
+
+    <!-- Banner Conversión en Vivo -->
+    <rect x="20" y="280" width="510" height="56" rx="6" fill="#F1F5F9" stroke="#E2E8F0"/>
+    <text x="36" y="303" class="text-muted">Total Moneda Local:</text>
+    <text x="420" y="303" class="text-body" style="font-weight:700;">8,400.00 PEN</text>
+    <text x="36" y="324" class="text-body" style="font-weight:700; fill:#2B6CB0;">Conversión a Moneda Base (EUR):</text>
+    <text x="440" y="324" class="text-body" style="font-weight:800; fill:#1A365D;">2,033.90 €</text>
+
+    <text x="20" y="365" class="text-muted">Cliente B2B *</text>
+    <rect x="20" y="376" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="399" class="text-body">Banco Santander Perú</text>
+
+    <text x="285" y="365" class="text-muted">Vendedor Corporativo *</text>
+    <rect x="285" y="376" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="297" y="399" class="text-body">Rosa Falcon</text>
+
+    <text x="20" y="435" class="text-muted">Método de Pago *</text>
+    <rect x="20" y="446" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="469" class="text-body">Transferencia Bancaria</text>
+
+    <text x="285" y="435" class="text-muted">Fecha *</text>
+    <rect x="285" y="446" width="245" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="297" y="469" class="text-body">2026-11-02</text>
+
+    <rect x="20" y="520" width="240" height="42" rx="6" fill="#1A365D"/>
+    <text x="42" y="546" style="font-family:'Segoe UI', sans-serif; font-size:13px; font-weight:700; fill:#FFF;">✓ Confirmar Venta (EUR)</text>
+
+    <rect x="275" y="520" width="255" height="42" rx="6" fill="#FFF" stroke="#E11D48"/>
+    <text x="286" y="546" style="font-family:'Segoe UI', sans-serif; font-size:11px; font-weight:700; fill:#E11D48;">⚠️ Probar Quiebre de Stock</text>
+  </g>
+
+  <!-- Tabla de Ventas en Filiales -->
+  <g transform="translate(858, 88)">
+    <rect x="0" y="0" width="550" height="680" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+    <rect x="0" y="0" width="550" height="46" rx="8" fill="#FAFAFC"/>
+    <text x="20" y="29" class="text-title" style="font-size:14px;">Ventas Registradas en Filiales</text>
+    <rect x="440" y="12" width="95" height="22" rx="4" fill="#DCFCE7"/>
+    <text x="452" y="27" class="text-sub" style="fill:#15803D;">EN VIVO</text>
+
+    <rect x="20" y="60" width="510" height="30" fill="#F1F5F9"/>
+    <text x="30" y="80" class="text-sub">FACTURA</text>
+    <text x="130" y="80" class="text-sub">FILIAL</text>
+    <text x="240" y="80" class="text-sub">TOTAL LOCAL</text>
+    <text x="420" y="80" class="text-sub">TOTAL EUR</text>
+
+    <!-- Item 1 -->
+    <text x="30" y="115" class="text-body" style="font-weight:700;">B001-000412</text>
+    <text x="130" y="115" class="text-body">Perú</text>
+    <text x="240" y="115" class="text-body">12,600.00 PEN</text>
+    <text x="420" y="115" class="text-body" style="font-weight:700; fill:#1A365D;">3,050.85 €</text>
+    <line x1="20" y1="130" x2="530" y2="130" stroke="#E2E8F0"/>
+
+    <!-- Item 2 -->
+    <text x="30" y="155" class="text-body" style="font-weight:700;">F002-000881</text>
+    <text x="130" y="155" class="text-body">Chile</text>
+    <text x="240" y="155" class="text-body">600.00 USD</text>
+    <text x="420" y="155" class="text-body" style="font-weight:700; fill:#1A365D;">555.56 €</text>
+    <line x1="20" y1="170" x2="530" y2="170" stroke="#E2E8F0"/>
+
+    <!-- Item 3 -->
+    <text x="30" y="195" class="text-body" style="font-weight:700;">B001-000413</text>
+    <text x="130" y="195" class="text-body">Perú</text>
+    <text x="240" y="195" class="text-body">10,500.00 PEN</text>
+    <text x="420" y="195" class="text-body" style="font-weight:700; fill:#1A365D;">2,542.37 €</text>
+  </g>
+</svg>

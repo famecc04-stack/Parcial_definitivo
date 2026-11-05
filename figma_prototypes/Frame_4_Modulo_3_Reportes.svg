@@ -1,0 +1,146 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .text-title { font-family: 'Segoe UI', Inter, sans-serif; font-size: 16px; font-weight: 700; fill: #1A365D; }
+      .text-sub { font-family: 'Segoe UI', Inter, sans-serif; font-size: 11px; font-weight: 600; fill: #64748B; }
+      .text-menu { font-family: 'Segoe UI', Inter, sans-serif; font-size: 13px; font-weight: 600; fill: #334155; }
+      .text-menu-active { font-family: 'Segoe UI', Inter, sans-serif; font-size: 13px; font-weight: 700; fill: #FFFFFF; }
+      .text-body { font-family: 'Segoe UI', Inter, sans-serif; font-size: 13px; fill: #1E293B; }
+      .text-muted { font-family: 'Segoe UI', Inter, sans-serif; font-size: 12px; fill: #64748B; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="900" fill="#F8FAFC"/>
+  <rect width="1440" height="4" fill="#2B6CB0"/>
+
+  <!-- SIDEBAR (260px) -->
+  <rect x="0" y="4" width="260" height="896" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Brand Sidebar -->
+  <rect x="20" y="24" width="38" height="38" rx="6" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <path d="M28 48V28H48V48H28Z" stroke="#1A365D" stroke-width="2" fill="none"/>
+  <text x="68" y="40" class="text-title" style="font-size: 16px;">FinanCorp SERF</text>
+  <text x="68" y="55" class="text-sub">FISCAL RISK &amp; REPORTING</text>
+  <line x1="0" y1="76" x2="260" y2="76" stroke="#E2E8F0"/>
+
+  <!-- Items del Menú -->
+  <!-- ITEM 1 -->
+  <rect x="20" y="98" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <rect x="31" y="98" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <rect x="20" y="109" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <rect x="31" y="109" width="7" height="7" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <text x="48" y="113" class="text-menu">Resumen y Configuración</text>
+
+  <!-- ITEM 2 -->
+  <path d="M20 152L29 147L38 152V163L29 168L20 163V152Z" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <text x="48" y="161" class="text-menu">Módulo 1: Productos Importados</text>
+
+  <!-- ITEM 3 -->
+  <path d="M20 198L22 193H36L38 198V208H20V198Z" stroke="#475569" stroke-width="1.8" fill="none"/>
+  <text x="48" y="204" class="text-menu">Módulo 2: Ventas en Filiales</text>
+
+  <!-- ITEM 4: Módulo 3 (ACTIVO) -->
+  <rect x="0" y="226" width="260" height="44" fill="#1A365D"/>
+  <rect x="0" y="226" width="4" height="44" fill="#3182CE"/>
+  <line x1="22" y1="248" x2="22" y2="240" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="28" y1="248" x2="28" y2="234" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="34" y1="248" x2="34" y2="242" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="48" y="253" class="text-menu-active">Módulo 3: Reportes Financieros</text>
+
+  <!-- TOPBAR -->
+  <rect x="260" y="4" width="1180" height="60" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="288" y="39" class="text-title" style="font-size: 15px;">FinanCorp S.A. - Sistema SERF (Sede Perú)</text>
+  <rect x="610" y="24" width="105" height="22" rx="4" fill="#EFF6FF" stroke="#BFDBFE"/>
+  <text x="618" y="39" class="text-sub" style="fill: #2B6CB0;">MULTINACIONAL B2B</text>
+
+  <rect x="940" y="18" width="460" height="34" rx="6" fill="#1A365D"/>
+  <rect x="948" y="23" width="90" height="24" rx="4" fill="#2B6CB0"/>
+  <text x="956" y="39" style="font-family:'Segoe UI', sans-serif; font-size:10px; font-weight:800; fill:#FFF;">TASAS OFICIALES</text>
+  <text x="1050" y="39" style="font-family:'Segoe UI', sans-serif; font-size:12px; font-weight:600; fill:#F1F5F9;">1 EUR = 4.13 PEN | 1 EUR = 7.82 CNY | 1 EUR = 1.08 USD</text>
+
+  <!-- CONTENIDO: Módulo 3 -->
+  <!-- Panel de Control GoF -->
+  <g transform="translate(288, 88)">
+    <rect x="0" y="0" width="1120" height="135" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+    <rect x="0" y="0" width="1120" height="40" rx="8" fill="#FAFAFC"/>
+    <text x="20" y="25" class="text-title" style="font-size:14px;">Panel de Generación de Reportes (Patrones GoF: Prototype, Builder, Composite, Decorator, Facade)</text>
+
+    <!-- 1. Prototype Select -->
+    <text x="20" y="65" class="text-sub">1. PLANTILLA BASE (PROTOTYPE):</text>
+    <rect x="20" y="74" width="340" height="36" rx="6" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="32" y="97" class="text-body" style="font-weight:600;">Reporte Trimestral de Gastos e Ingresos (Q4)</text>
+
+    <!-- 2. Decorators Checkboxes -->
+    <text x="400" y="65" class="text-sub">2. CAPAS DE SEGURIDAD VISUAL (DECORATOR):</text>
+    <rect x="400" y="82" width="18" height="18" rx="4" fill="#1A365D"/>
+    <path d="M404 91L407 94L414 86" stroke="#FFF" stroke-width="2" fill="none"/>
+    <text x="426" y="96" class="text-body" style="font-size:12px; font-weight:600;">Marca de Agua: CONFIDENCIAL</text>
+
+    <rect x="640" y="82" width="18" height="18" rx="4" fill="#1A365D"/>
+    <path d="M644 91L647 94L654 86" stroke="#FFF" stroke-width="2" fill="none"/>
+    <text x="666" y="96" class="text-body" style="font-size:12px; font-weight:600;">Firma Digital: Cadillo / Orellana</text>
+
+    <!-- 3. Facade Action Button -->
+    <rect x="890" y="72" width="210" height="40" rx="6" fill="#1A365D"/>
+    <text x="910" y="97" style="font-family:'Segoe UI', sans-serif; font-size:13px; font-weight:700; fill:#FFF;">▶ Generar Reporte (Facade)</text>
+  </g>
+
+  <!-- Report Paper Ensamble (Builder + Composite + Decorator) -->
+  <g transform="translate(288, 240)">
+    <rect x="0" y="0" width="1120" height="630" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+
+    <!-- Marca de agua diagonal (Decorator) -->
+    <text x="560" y="320" text-anchor="middle" transform="rotate(-25 560 320)" style="font-family:'Segoe UI', sans-serif; font-size:62px; font-weight:900; fill:rgba(225, 29, 72, 0.08); letter-spacing:6px;">CONFIDENCIAL</text>
+
+    <!-- Banner Decorator Superior -->
+    <rect x="24" y="20" width="1072" height="34" rx="6" fill="#FFF1F2" stroke="#FECDD3"/>
+    <text x="560" y="42" text-anchor="middle" style="font-family:'Segoe UI', sans-serif; font-size:12px; font-weight:800; fill:#BE123C; letter-spacing:1px;">🔒 CAPA DE SEGURIDAD (DECORATOR): CONFIDENCIAL - USO INTERNO EXCLUSIVO FINANCORP S.A.</text>
+
+    <!-- Header Reporte (Builder) -->
+    <text x="24" y="85" class="text-title" style="font-size:22px; font-weight:800;">Reporte Trimestral de Gastos e Ingresos</text>
+    <text x="24" y="105" class="text-muted">Periodo Contable: Q4 2026 • Audiencia: Comité de Finanzas</text>
+
+    <text x="1096" y="85" text-anchor="end" class="text-body" style="font-weight:700; fill:#1A365D;">FINANCORP S.A.</text>
+    <text x="1096" y="105" text-anchor="end" class="text-muted">Moneda Base Oficial: Euros (EUR)</text>
+    <line x1="24" y1="120" x2="1096" y2="120" stroke="#1A365D" stroke-width="2"/>
+
+    <!-- Secciones Composite -->
+    <!-- Sección 1: Ingresos por País -->
+    <rect x="24" y="135" width="1072" height="85" rx="6" fill="#FAFAFC" stroke="#E2E8F0"/>
+    <rect x="24" y="135" width="1072" height="30" fill="#F1F5F9"/>
+    <text x="38" y="155" class="text-body" style="font-weight:700; fill:#1A365D;">1. Ingresos por Filial / País (EUR)</text>
+    <text x="1080" y="155" text-anchor="end" class="text-body" style="font-weight:700; fill:#2B6CB0;">8,627.12 €</text>
+    <text x="38" y="190" class="text-body">Filial Perú: 7,627.12 €</text>
+    <text x="400" y="190" class="text-body">Filial Chile: 1,000.00 €</text>
+
+    <!-- Sección 2: Ingresos por Categoría -->
+    <rect x="24" y="235" width="1072" height="85" rx="6" fill="#FAFAFC" stroke="#E2E8F0"/>
+    <rect x="24" y="235" width="1072" height="30" fill="#F1F5F9"/>
+    <text x="38" y="255" class="text-body" style="font-weight:700; fill:#1A365D;">2. Ingresos por Categoría de Producto (EUR)</text>
+    <text x="1080" y="255" text-anchor="end" class="text-body" style="font-weight:700; fill:#2B6CB0;">8,627.12 €</text>
+    <text x="38" y="290" class="text-body">Laptop: 5,084.75 €</text>
+    <text x="300" y="290" class="text-body">Smartphone: 2,542.37 €</text>
+    <text x="600" y="290" class="text-body">Equipo Red: 555.56 €</text>
+    <text x="850" y="290" class="text-body">Accesorio: 444.44 €</text>
+
+    <!-- Sección 3: Gastos Shenzhen -->
+    <rect x="24" y="335" width="1072" height="85" rx="6" fill="#FAFAFC" stroke="#E2E8F0"/>
+    <rect x="24" y="335" width="1072" height="30" fill="#F1F5F9"/>
+    <text x="38" y="355" class="text-body" style="font-weight:700; fill:#1A365D;">3. Gastos de Importación (Shenzhen - China)</text>
+    <text x="1080" y="355" text-anchor="end" class="text-body" style="font-weight:700; fill:#E11D48;">27,979.54 €</text>
+    <text x="38" y="390" class="text-body">Lotes Shenzhen: Laptop X1 (13,235.29 €) | Smartphone 5G (11,253.20 €) | Routers (2,109.97 €)</text>
+
+    <!-- Tarjeta de Firma Digital (Decorator) -->
+    <rect x="24" y="445" width="1072" height="85" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+    <circle cx="65" cy="487" r="22" fill="#1A365D"/>
+    <text x="65" y="493" text-anchor="middle" style="font-size:18px; fill:#FFF;">✓</text>
+    
+    <text x="105" y="475" class="text-body" style="font-weight:800; font-size:15px; fill:#1A365D;">Fabiola Cadillo / Estefanía Orellana</text>
+    <text x="105" y="495" class="text-sub">Auditoras Financieras Senior - FinanCorp S.A.</text>
+    <text x="105" y="512" class="text-muted" style="font-size:11px;">Dirección General de Reportes y Cumplimiento B2B</text>
+
+    <rect x="910" y="460" width="170" height="22" rx="4" fill="#DCFCE7"/>
+    <text x="920" y="475" class="text-sub" style="fill:#15803D; font-weight:800;">CERTIFICADA Y VERIFICADA</text>
+    <text x="1080" y="500" text-anchor="end" class="text-muted" style="font-size:11px;">Sello Criptográfico: SHA256: 7F9A2B4C18D5E399AA81B204C7410EF4219CB</text>
+  </g>
+</svg>

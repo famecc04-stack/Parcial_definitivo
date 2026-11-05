@@ -1,0 +1,22 @@
+# Compilados de Java
+*.class
+bin/
+target/
+*.jar
+*.war
+*.ear
+
+# Entornos de desarrollo e IDEs
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Logs y temporales
+*.log
+sources_temp.txt
+test_body.json
+.DS_Store
+Thumbs.db
